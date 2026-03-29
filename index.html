@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anteiku 2026 March Duo Tournament | Сетка</title>
+    
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1271837811796082819/1271837813175746620/undefined_-_Imgur_1.png?ex=69c9e004&is=69c88e84&hm=e94590918508f07d13caaadf9d08542eaaba127baa4401e921dd9a1bdb6cbbe6&">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -13,7 +16,7 @@
             --accent-color: #e60000;
             --border-color: #2a2a2a;
             --hover-bg: #1a1a1a;
-            --ds-color: #7289DA;
+            --ds-color: #7289DA; /* Фирменный цвет Discord */
             --tg-color: #0088cc;
             --main-font: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
@@ -91,13 +94,41 @@
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 14px; }
         th { color: #aaa; text-transform: uppercase; font-size: 11px; }
+        
+        /* Стилизация дискорд-тега в таблице */
+        .discord-table-tag {
+            color: var(--ds-color);
+            font-family: monospace;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Отступ между иконкой и текстом */
+        }
+
         .gc-amount { color: #ffcc00; font-weight: bold; }
 
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: var(--card-bg); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
         .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
-        .discord-tag { background: #1a1c1e; color: #9eb5ff; padding: 10px 15px; margin: 10px auto; border-radius: 8px; font-size: 15px; font-weight: 600; border: 1px solid rgba(114, 137, 218, 0.3); }
+        
+        /* Стилизация дискорд-тега в модальном окне */
+        .discord-tag {
+            background: #1a1c1e;
+            color: var(--ds-color);
+            padding: 10px 15px;
+            margin: 12px auto;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1px solid rgba(114, 137, 218, 0.3);
+            word-break: break-all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Отступ между иконкой и текстом */
+        }
+
         .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
         .rules-list .note { color: #aaa; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #333; padding-left: 8px; }
 
@@ -163,13 +194,12 @@
             <table>
                 <thead><tr><th>Дискорд-тег</th><th>Должность</th></tr></thead>
                 <tbody>
-                    <tr><td>@wincommunity</td><td>Организатор</td></tr>
-                    <tr><td>@yabezymecc</td><td>Основной следящий</td></tr>
-                    <tr><td>@notreuside</td><td>Основной следящий</td></tr>
-                    <tr><td>@londonromantic</td><td>Основной следящий</td></tr>
-                    <tr><td>@.fuggig</td><td>Следящий</td></tr>
-                    <tr><td>@tortuna812</td><td>Следящий</td></tr>
-                    <tr><td>@wqqq04</td><td>Следящий</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @wincommunity</span></td><td>Организатор</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @yabezymecc</span></td><td>Основной следящий</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @londonromantic</span></td><td>Основной следящий</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @notreuside</span></td><td>Следящий</td></tr> <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @.fuggig</span></td><td>Следящий</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @tortuna812</span></td><td>Следящий</td></tr>
+                    <tr><td><span class="discord-table-tag"><i class="fa-brands fa-discord"></i> @wqqq04</span></td><td>Следящий</td></tr>
                 </tbody>
             </table>
         </div>
@@ -210,48 +240,28 @@
     </div>
 
     <script>
-        // Итоговый список 48 команд (удалены @adrizzex, @vadim00684, @hurricane.08, @wqqq04)
         const teamsDB = [
             { name: "QL", t1: "@mincxxx", t2: "@consiencenotfound" }, { name: "fv", t1: "@yyvv26", t2: "@izixizix" }, { name: "Восхитительные", t1: "@wast3dw1ll", t2: "@ismzxc" }, { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" }, { name: "nestrxndzsexysw", t1: "@only_nestrxndz", t2: "@torexzz." }, { name: "Ebem", t1: "@dizkoverr", t2: "@jefre_epstein" }, { name: "1winbetboom team", t1: "@quancorace", t2: "@marceline33" }, { name: "ZhasBe", t1: "@bernardszd", t2: "@dzhasikk" }, { name: "TR", t1: "@pavelmatvee11", t2: "@reinn666" }, { name: "Газан", t1: "@.maksim.dark", t2: "@fairikun" }, { name: "Mover", t1: "@tezikvalotondor", t2: "@dragon_mover" }, { name: "wp", t1: "@m9wkh", t2: "@phoenixxst." }, { name: "suzuki", t1: "@lonbbos", t2: "@bairon0364" }, { name: "Вотч", t1: "@only_winstrike", t2: "@only_dema" }, { name: "Бич и проф", t1: "@blagopodobniy", t2: "@.mqswkks" }, { name: "bg", t1: "@gracioc", t2: "@flerr1xx" }, { name: "Qwrszzzx", t1: "@qwrszxsky", t2: "@jonnybrayn_09" }, { name: "Узбек сила", t1: "@triks_vpotoke", t2: "@se00000mns6" }, { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." }, { name: "faisted", t1: "@faistedrom", t2: "@imm0rtal666" }, { name: "Незнаю", t1: "@deleted.user0011", t2: "@foster_solo" }, { name: "Инвалиды Вася и Гася", t1: "@tsoufall", t2: "@wiliam_glockovv" }, { name: "Бананы", t1: "@andriudeiner", t2: "@r1ce001" }, { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" }, { name: "Furious top 1", t1: "@furious_official", t2: "@monte00973" }, { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" }, { name: "Go", t1: "@gggg88ihhjj_55366", t2: "@dazzling666" }, { name: "xv", t1: "@xdkak", t2: "@woodyxx" }, { name: "KS", t1: "@only_deprescore", t2: "@senyaferz" }, { name: "Манчестер Юнайтед", t1: "@cutieseattle", t2: "@fimiguerreroo" }, { name: "Зайдём с легитом", t1: "@abayuzer", t2: "@sanyalegenda_" }, { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" }, { name: "Богдан тащи", t1: "@tr1ppppppp", t2: "@weaknessinheart" }, { name: "Наследство", t1: "@ventilyator_", t2: "@inderitance_1" }, { name: "фо / фе", t1: "@forzinio", t2: "@bratforzin" }, { name: "KwizixdxDream", t1: "@kwizixd.", t2: "@kemal_berzloy" }, { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" }, { name: "hrs", t1: "@awarano", t2: "@iuri07576" }, { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" }, { name: "Haroldwizzex", t1: "@haroku", t2: "@immportal_immportal" }, { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" }, { name: "TD", t1: "@thunglov.0", t2: "@ya.demid" }, { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" }, { name: "nasvai", t1: "@ebnutyi", t2: "@posyabekich" }, { name: "хеллуин насвай", t1: "@excellentswet", t2: "@fl3xtro" }, { name: "TF", t1: "@zeromeoness.", t2: "@flensy2" }, { name: "Империя Вайтов", t1: "@radgaw9ch", t2: "@meow7404" }, { name: "Не знающие побед", t1: "@kanao_0101", t2: "@nasvai_." }
         ];
 
-        // 32 команды в 1 тур, 16 команд во второй
         const teamsRound1 = teamsDB.slice(0, 32);
         const teamsRound2 = teamsDB.slice(32, 48);
 
         function drawSide(containerId, teamsR1, teamsR2) {
             const container = document.getElementById(containerId);
             const sideStages = [ { title: "1/32 Финала", matches: 8 }, { title: "1/16 Финала", matches: 8 }, { title: "1/8 Финала", matches: 4 }, { title: "1/4 Финала", matches: 2 }, { title: "Полуфинал", matches: 1 } ];
-            
-            let r1Idx = 0;
-            let r2Idx = 0;
-
+            let r1Idx = 0; let r2Idx = 0;
             sideStages.forEach((stage, sIdx) => {
                 const round = document.createElement('div'); round.className = 'round';
                 round.innerHTML = `<div class="round-title">${stage.title}</div>`;
-                
                 for (let i = 0; i < stage.matches; i++) {
                     const match = document.createElement('div'); match.className = 'match';
                     for (let j = 0; j < 2; j++) {
                         const team = document.createElement('div'); team.className = 'team';
                         let name = "TBD", score = "-";
-
-                        if (sIdx === 0) {
-                            // Первый тур - 16 матчей по всему турниру (8 на сторону)
-                            name = teamsR1[r1Idx].name; score = "0";
-                            team.dataset.t1 = teamsR1[r1Idx].t1; team.dataset.t2 = teamsR1[r1Idx].t2;
-                            r1Idx++;
-                        } else if (sIdx === 1) {
-                            // Второй тур - половина слотов занята теми кто ждал (8 на сторону)
-                            if (j === 1) {
-                                name = teamsR2[r2Idx].name; score = "0";
-                                team.dataset.t1 = teamsR2[r2Idx].t1; team.dataset.t2 = teamsR2[r2Idx].t2;
-                                r2Idx++;
-                            }
-                        }
-                        
-                        team.dataset.name = name;
-                        team.innerHTML = `<span class="team-name">${name}</span><span class="score">${score}</span>`;
+                        if (sIdx === 0) { name = teamsR1[r1Idx].name; score = "0"; team.dataset.t1 = teamsR1[r1Idx].t1; team.dataset.t2 = teamsR1[r1Idx].t2; r1Idx++; }
+                        else if (sIdx === 1 && j === 1) { name = teamsR2[r2Idx].name; score = "0"; team.dataset.t1 = teamsR2[r2Idx].t1; team.dataset.t2 = teamsR2[r2Idx].t2; r2Idx++; }
+                        team.dataset.name = name; team.innerHTML = `<span class="team-name">${name}</span><span class="score">${score}</span>`;
                         match.appendChild(team);
                     }
                     round.appendChild(match);
@@ -259,7 +269,6 @@
                 container.appendChild(round);
             });
         }
-
         drawSide('bracket-left', teamsRound1.slice(0, 16), teamsRound2.slice(0, 8));
         drawSide('bracket-right', teamsRound1.slice(16, 32), teamsRound2.slice(8, 16));
 
@@ -270,11 +279,14 @@
         document.querySelectorAll('.team').forEach(t => t.onclick = () => {
             if (t.dataset.name === "TBD" || !t.dataset.t1) return;
             document.getElementById("modalTitle").innerText = t.dataset.name;
-            document.getElementById("modalPlayers").innerHTML = `<div class="discord-tag">${t.dataset.t1}</div><div class="discord-tag">${t.dataset.t2}</div>`;
+            // ДОБАВЛЕНИЕ ИКОНКИ ДИСКОРДА ПЕРЕД ТЕГОМ В МОДАЛКЕ
+            document.getElementById("modalPlayers").innerHTML = `
+                <div class="discord-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div>
+                <div class="discord-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>
+            `;
             tm.style.display = "flex";
         });
         window.onclick = e => { if (e.target == tm) tm.style.display = "none"; if (e.target == rm) rm.style.display = "none"; };
-        
         const slider = document.getElementById('scroll-area');
         let isDown = false, startX, scrollLeft;
         slider.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
