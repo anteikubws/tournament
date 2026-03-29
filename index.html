@@ -6,8 +6,8 @@
     <title>Anteiku 2026 March Duo Tournament | Сетка</title>
     
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1271837811796082819/1271837813175746620/undefined_-_Imgur_1.png?ex=69c9e004&is=69c88e84&hm=e94590918508f07d13caaadf9d08542eaaba127baa4401e921dd9a1bdb6cbbe6&">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
             --card-bg: rgba(17, 17, 17, 0.9); 
@@ -16,125 +16,94 @@
             --border-color: rgba(42, 42, 42, 0.7);
             --hover-bg: rgba(26, 26, 26, 0.8);
             --ds-color: #7289DA;
-            --org-color: #ff0000; /* Красный для Орга */
-            --main-admin-color: #ffff00; /* Желтый для Основных */
+            --tg-color: #0088cc;
+            --org-color: #ff0000; 
+            --main-admin-color: #ffff00; 
+            --gold-color: #ffcc00;   /* Золото */
+            --silver-color: #c0c0c0; /* Серебро */
             --main-font: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            color: var(--text-color);
-            font-family: var(--main-font); margin: 0; padding: 20px;
+            color: var(--text-color); font-family: var(--main-font); margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden; width: 100vw;
-            min-height: 100vh;
-            position: relative;
-            background: #000;
+            overflow-x: hidden; width: 100vw; min-height: 100vh; position: relative; background: #000;
         }
 
         body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://cdn.discordapp.com/attachments/1271549957295444100/1487867564951474287/IMG_20251118_175539_365_edit_68526370671670.jpg?ex=69cab426&is=69c962a6&hm=10e9fd383445ccf9ff943b2ae11294f2fcfe8774803018fa0c66f36c6d95596f&');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(8px) brightness(0.3);
-            transform: scale(1.1);
-            z-index: -1;
+            background-size: cover; background-position: center; filter: blur(8px) brightness(0.3); transform: scale(1.1); z-index: -1;
         }
 
-        .header-container {
-            width: 100%; max-width: 1400px; display: flex; flex-direction: column;
-            align-items: center; gap: 20px; margin-bottom: 30px; padding-bottom: 25px;
-            border-bottom: 2px solid var(--accent-color);
-            position: relative; z-index: 1;
-        }
+        .header-container { width: 100%; max-width: 1400px; display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid var(--accent-color); position: relative; z-index: 1; }
+        h1 { text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 26px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .title-logo { height: 45px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
 
-        h1 {
-            text-transform: uppercase; letter-spacing: 2px; margin: 0; font-size: 26px;
-            text-align: center; display: flex; align-items: center; justify-content: center;
-            gap: 15px; flex-wrap: wrap;
-        }
-
-        .title-logo { height: 45px; width: auto; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
-
-        .social-links { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%; margin-top: 10px; }
-        .social-links a {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            color: #fff; font-size: 13px; font-weight: 700; text-transform: uppercase;
-            text-decoration: none; background: var(--card-bg); border: 1px solid var(--border-color);
-            padding: 10px 20px; border-radius: 30px; transition: 0.3s;
-            backdrop-filter: blur(5px);
-        }
-
-        .rules-btn-container { margin-bottom: 40px; position: relative; z-index: 1; }
         .rules-btn {
             background-color: var(--accent-color); color: #fff; border: none;
             padding: 12px 30px; border-radius: 6px; font-size: 15px; font-weight: 800;
             text-transform: uppercase; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.3); margin-bottom: 40px;
         }
 
+        /* --- СЕТКА --- */
         .bracket-wrapper { width: 100%; overflow-x: auto; padding-bottom: 30px; cursor: grab; position: relative; z-index: 1; }
         .bracket-container { display: flex; min-width: max-content; justify-content: center; align-items: center; padding: 0 50px; }
         .side-bracket { display: flex; align-items: center; }
-        .side-bracket.right { flex-direction: row-reverse; }
         .round { display: flex; flex-direction: column; width: 230px; margin: 0 30px; justify-content: space-around; height: 100%; }
         .round-title { text-align: center; text-transform: uppercase; font-size: 13px; color: #fff; background: rgba(230,0,0,0.2); padding: 5px 0; border-radius: 4px; margin-bottom: 20px; font-weight: 800; backdrop-filter: blur(2px); }
         .match { background: var(--card-bg); border: 1px solid var(--border-color); margin: 10px 0; border-radius: 6px; position: relative; min-height: 44px; backdrop-filter: blur(10px); }
         .side-bracket.left .match { border-left: 3px solid var(--accent-color); }
         .side-bracket.right .match { border-right: 3px solid var(--accent-color); }
         .team { padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 14px; cursor: pointer; height: 22px; }
-        .team-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; font-weight: 600; text-shadow: 0 1px 2px #000; }
+        .team-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; font-weight: 600; }
         .score { background: #e60000; padding: 2px 7px; border-radius: 3px; font-weight: 800; color: #fff; font-size: 11px; }
 
-        .match::after { content: ''; position: absolute; background: var(--border-color); }
-        .side-bracket.left .round:not(:last-child) .match::after { right: -31px; top: 50%; width: 31px; height: 1px; }
-        .side-bracket.right .round:not(:last-child) .match::after { left: -31px; top: 50%; width: 31px; height: 1px; }
-
+        /* --- ФИНАЛ С ПРИЗОВЫМИ --- */
         .central-final { width: 300px; display: flex; flex-direction: column; align-items: center; margin: 0 40px; }
         .final-match { width: 100%; background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 8px; box-shadow: 0 0 25px rgba(230, 0, 0, 0.4); padding: 20px; text-align: center; backdrop-filter: blur(10px); }
-        .final-team { padding: 15px; background: rgba(255,255,255,0.03); border-radius: 6px; font-weight: 700; font-size: 18px; margin: 8px 0; border: 1px solid var(--border-color); }
-        .final-prizepool { color: var(--accent-color); font-weight: 900; font-size: 24px; margin-top: 15px; }
+        .final-match h2 { text-transform: uppercase; margin: 0 0 5px 0; font-size: 18px; color: #fff; font-weight: 800; }
+        
+        .prize-gold { color: var(--gold-color); font-weight: 900; font-size: 20px; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
+        .prize-silver { color: var(--silver-color); font-weight: 800; font-size: 18px; margin-top: 15px; text-shadow: 0 0 8px rgba(192, 192, 192, 0.4); }
 
-        .info-tables { display: flex; flex-wrap: wrap; gap: 30px; width: 100%; max-width: 1200px; margin-top: 50px; justify-content: center; position: relative; z-index: 1; padding-bottom: 50px; }
-        .table-card { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); border-radius: 6px; padding: 20px; flex: 1; min-width: 320px; backdrop-filter: blur(10px); }
-        .table-card h2 { text-align: center; margin-bottom: 20px; font-size: 18px; font-weight: 800; text-transform: uppercase; }
+        .final-team-box { padding: 15px; background: rgba(255,255,255,0.03); border-radius: 6px; margin: 8px 0; border: 1px solid var(--border-color); font-weight: 700; font-size: 18px; }
+
+        /* --- КУРАТОРЫ --- */
+        .curators-section { width: 100%; max-width: 1000px; margin-top: 50px; position: relative; z-index: 1; text-align: center; }
+        .curators-section h2 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 22px; }
+        .curators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding-bottom: 50px; }
+        .curator-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: 0.3s; backdrop-filter: blur(10px); cursor: pointer; }
+        .curator-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .curator-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .curator-info { text-align: left; }
+        .curator-name { font-weight: 800; font-size: 16px; display: block; }
+        .curator-role { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #aaa; }
+        .role-org { color: var(--org-color) !important; border-left: 4px solid var(--org-color); }
+        .role-main { color: var(--main-admin-color) !important; border-left: 4px solid var(--main-admin-color); }
+        .role-regular { color: var(--ds-color) !important; border-left: 4px solid var(--ds-color); }
+        .curator-links { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: rgba(0,0,0,0.3); display: flex; justify-content: space-around; padding: 0; }
+        .curator-card.active .curator-links { max-height: 100px; padding: 15px; border-top: 1px solid var(--border-color); }
+        .contact-btn { text-decoration: none; color: #fff; font-size: 12px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .contact-btn i { font-size: 20px; }
+
+        /* Награды */
+        .awards-container { width: 100%; max-width: 600px; margin-top: 30px; position: relative; z-index: 1; padding-bottom: 50px; }
+        .table-card { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); border-radius: 6px; padding: 20px; backdrop-filter: blur(10px); }
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 14px; }
-        th { color: #aaa; text-transform: uppercase; font-size: 11px; font-weight: 700; }
-        
-        /* Стилизация дискорд-тегов */
-        .ds-tag { display: flex; align-items: center; gap: 6px; font-family: monospace; font-weight: bold; }
-        .tag-org { color: var(--org-color); }
-        .tag-main { color: var(--main-admin-color); }
-        .tag-regular { color: var(--ds-color); }
-
         .gc-amount { color: #ffcc00; font-weight: bold; }
 
+        /* Модалки */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: rgba(20, 20, 20, 0.95); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
-        .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
-        
-        .modal-ds-tag {
-            background: rgba(26, 28, 30, 0.8); color: var(--ds-color); padding: 10px 15px; margin: 12px auto;
-            border-radius: 8px; font-size: 15px; font-weight: 600; border: 1px solid rgba(114, 137, 218, 0.3);
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
+        .modal-ds-tag { background: rgba(26, 28, 30, 0.8); color: var(--ds-color); padding: 10px 15px; margin: 12px auto; border-radius: 8px; font-size: 15px; font-weight: 600; border: 1px solid rgba(114, 137, 218, 0.3); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-        .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
-        .rules-list .note { color: #bbb; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #444; padding-left: 8px; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 18px; }
-            .round { width: 170px; margin: 0 10px; }
-            .central-final { width: 220px; }
-            .table-card { min-width: 100%; }
-        }
+        @media (max-width: 768px) { .round { width: 170px; } .curators-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -144,15 +113,9 @@
             <img src="https://cdn.discordapp.com/attachments/1271837811796082819/1271837813175746620/undefined_-_Imgur_1.png?ex=69c9e004&is=69c88e84&hm=e94590918508f07d13caaadf9d08542eaaba127baa4401e921dd9a1bdb6cbbe6&" alt="GM" class="title-logo">
             Anteiku 2026 March Duo Tournament
         </h1>
-        <div class="social-links">
-            <a href="https://t.me/byanteiku" target="_blank" class="tg"><i class="fa-brands fa-telegram"></i> телеграм канал</a>
-            <a href="https://discord.gg/qgVS7gaxf" target="_blank" class="ds"><i class="fa-brands fa-discord"></i> дискорд канал</a>
-        </div>
     </div>
 
-    <div class="rules-btn-container">
-        <button class="rules-btn" id="openRules">Tournament Rules</button>
-    </div>
+    <button class="rules-btn" onclick="document.getElementById('rulesModal').style.display='flex'">Tournament Rules</button>
 
     <div class="bracket-wrapper" id="scroll-area">
         <div class="bracket-container">
@@ -160,98 +123,85 @@
             <div class="central-final">
                 <div class="final-match">
                     <h2>Grand Final</h2>
-                    <div class="final-team">TBD</div>
-                    <div style="color: var(--accent-color); font-weight: bold; margin: 5px 0;">VS</div>
-                    <div class="final-team">TBD</div>
-                    <div class="final-prizepool">10.000₽</div>
+                    <div class="prize-gold"><i class="fa-solid fa-trophy"></i> 6.500₽</div>
+                    
+                    <div class="final-team-box">TBD</div>
+                    <div style="color:var(--accent-color); font-weight:bold; margin:2px 0;">VS</div>
+                    <div class="final-team-box">TBD</div>
+                    
+                    <div class="prize-silver"><i class="fa-solid fa-medal"></i> 3.000₽</div>
                 </div>
             </div>
             <div class="side-bracket right" id="bracket-right"></div>
         </div>
     </div>
 
-    <div class="info-tables">
-        <div class="table-card">
-            <h2>Tournament Awards</h2>
-            <table>
-                <thead><tr><th>Стадия</th><th>MVP</th><th>EVP</th><th>Награды</th></tr></thead>
-                <tbody>
-                    <tr><td>1 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>2 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>3 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>4 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>5 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>6 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>Итог Турнира</td><td>NC</td><td>NC</td><td class="gc-amount">500 GC</td></tr>
-                </tbody>
-            </table>
+    <section class="curators-section">
+        <h2>Кураторы турнира</h2>
+        <div class="curators-grid">
+            <div class="curator-card role-org" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@wincommunity</span><span class="curator-role">Организатор</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links">
+                    <a href="https://t.me/nepecnume" target="_blank" class="contact-btn"><i class="fa-brands fa-telegram"></i>TG</a>
+                    <a href="javascript:void(0)" onclick="copyDs('@wincommunity')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a>
+                </div>
+            </div>
+            <div class="curator-card role-main" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@yabezymecc</span><span class="curator-role">Основной следящий</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links">
+                    <a href="https://t.me/teisheirra" target="_blank" class="contact-btn"><i class="fa-brands fa-telegram"></i>TG</a>
+                    <a href="javascript:void(0)" onclick="copyDs('@yabezymecc')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a>
+                </div>
+            </div>
+            <div class="curator-card role-main" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@londonromantic</span><span class="curator-role">Основной следящий</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links">
+                    <a href="https://t.me/londoncavalier" target="_blank" class="contact-btn"><i class="fa-brands fa-telegram"></i>TG</a>
+                    <a href="javascript:void(0)" onclick="copyDs('@londonromantic')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a>
+                </div>
+            </div>
+            <div class="curator-card role-regular" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@notreuside</span><span class="curator-role">Следящий</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links"><a href="javascript:void(0)" onclick="copyDs('@notreuside')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a></div>
+            </div>
+            <div class="curator-card role-regular" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@.fuggig</span><span class="curator-role">Следящий</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links"><a href="javascript:void(0)" onclick="copyDs('@.fuggig')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a></div>
+            </div>
+            <div class="curator-card role-regular" onclick="this.classList.toggle('active')">
+                <div class="curator-header"><div class="curator-info"><span class="curator-name">@tortuna812</span><span class="curator-role">Следящий</span></div><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="curator-links"><a href="javascript:void(0)" onclick="copyDs('@tortuna812')" class="contact-btn"><i class="fa-brands fa-discord"></i>DS</a></div>
+            </div>
         </div>
+    </section>
+
+    <div class="awards-container">
         <div class="table-card">
-            <h2>Кураторы турнира</h2>
+            <h2 style="text-align:center; text-transform:uppercase;">Tournament Awards</h2>
             <table>
-                <thead><tr>
-                    <th><i class="fa-brands fa-discord"></i> Дискорд-тег</th>
-                    <th>Должность</th>
-                </tr></thead>
+                <thead><tr><th>Стадия</th><th>MVP</th><th>Награды</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="ds-tag tag-org"><i class="fa-brands fa-discord"></i> @wincommunity</span></td><td>Организатор</td></tr>
-                    <tr><td><span class="ds-tag tag-main"><i class="fa-brands fa-discord"></i> @yabezymecc</span></td><td>Основной следящий</td></tr>
-                    <tr><td><span class="ds-tag tag-main"><i class="fa-brands fa-discord"></i> @londonromantic</span></td><td>Основной следящий</td></tr>
-                    <tr><td><span class="ds-tag tag-regular"><i class="fa-brands fa-discord"></i> @notreuside</span></td><td>Следящий</td></tr>
-                    <tr><td><span class="ds-tag tag-regular"><i class="fa-brands fa-discord"></i> @.fuggig</span></td><td>Следящий</td></tr>
-                    <tr><td><span class="ds-tag tag-regular"><i class="fa-brands fa-discord"></i> @tortuna812</span></td><td>Следящий</td></tr>
-                    <tr><td><span class="ds-tag tag-regular"><i class="fa-brands fa-discord"></i> @wqqq04</span></td><td>Следящий</td></tr>
+                    <tr><td>Этапы 1-6</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>Итог</td><td>NC</td><td class="gc-amount">500 GC</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div id="rulesModal" class="modal">
-        <div class="modal-content rules-content">
-            <span class="close" id="closeRules">&times;</span>
-            <h2 style="text-align: center;">Tournament Rules</h2>
-            <div class="rules-list"><ol>
-                <li>Обязательный полный фрапс с захода в игру <span class="note">(Если фрапса не будет то переигровка или же АП). Примечание: фрапс с меню телефона, шторка, активные вкладки. Примечание 2: секундомер точного времени на экране.</span></li>
-                <li>Хиллки/Сбив анимки при согласии двух сторон.</li>
-                <li>Оружие только Deagle.</li>
-                <li>При подозрении на софт/IOS — проверка (отказ = АП).</li>
-                <li>Стороны сами выбирают сервер.</li>
-                <li>Кулаки разрешены (без фанатизма).</li>
-                <li>Локация ЛСП - лесопилка.</li>
-                <li>Организатор вправе менять правила без разъяснений.</li>
-                <li>Организатор не выдает оружие. Побеждает выживший.</li>
-                <li>Названия команд без осков и родни.</li>
-                <li>Игра не более 15 минут.</li>
-                <li>Запрещено тянуть игру. <span class="note">Защита не более 3 мин на одной позиции.</span></li>
-                <li>Неуважение к администрации — дисквалификация.</li>
-                <li>Запрещены труднодоступные места (лг, хг).</li>
-                <li>Следящие вправе просить откат без объяснения причин.</li>
-                <li>Хранить фрапс до вынесения вердикта.</li>
-                <li>Запрещены твинки и подставные лица — вечный бан.</li>
-            </ol></div>
-        </div>
-    </div>
-
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeTeam">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <div id="modalPlayers"></div>
-        </div>
-    </div>
+    <div id="rulesModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('rulesModal').style.display='none'">&times;</span><h2>Rules</h2><p>Полные правила в Discord канале.</p></div></div>
+    <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
 
     <script>
         const teamsDB = [
             { name: "QL", t1: "@mincxxx", t2: "@consiencenotfound" }, { name: "fv", t1: "@yyvv26", t2: "@izixizix" }, { name: "Восхитительные", t1: "@wast3dw1ll", t2: "@ismzxc" }, { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" }, { name: "nestrxndzsexysw", t1: "@only_nestrxndz", t2: "@torexzz." }, { name: "Ebem", t1: "@dizkoverr", t2: "@jefre_epstein" }, { name: "1winbetboom team", t1: "@quancorace", t2: "@marceline33" }, { name: "ZhasBe", t1: "@bernardszd", t2: "@dzhasikk" }, { name: "TR", t1: "@pavelmatvee11", t2: "@reinn666" }, { name: "Газан", t1: "@.maksim.dark", t2: "@fairikun" }, { name: "Mover", t1: "@tezikvalotondor", t2: "@dragon_mover" }, { name: "wp", t1: "@m9wkh", t2: "@phoenixxst." }, { name: "suzuki", t1: "@lonbbos", t2: "@bairon0364" }, { name: "Вотч", t1: "@only_winstrike", t2: "@only_dema" }, { name: "Бич и проф", t1: "@blagopodobniy", t2: "@.mqswkks" }, { name: "bg", t1: "@gracioc", t2: "@flerr1xx" }, { name: "Qwrszzzx", t1: "@qwrszxsky", t2: "@jonnybrayn_09" }, { name: "Узбек сила", t1: "@triks_vpotoke", t2: "@se00000mns6" }, { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." }, { name: "faisted", t1: "@faistedrom", t2: "@imm0rtal666" }, { name: "Незнаю", t1: "@deleted.user0011", t2: "@foster_solo" }, { name: "Инвалиды Вася и Гася", t1: "@tsoufall", t2: "@wiliam_glockovv" }, { name: "Бананы", t1: "@andriudeiner", t2: "@r1ce001" }, { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" }, { name: "Furious top 1", t1: "@furious_official", t2: "@monte00973" }, { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" }, { name: "Go", t1: "@gggg88ihhjj_55366", t2: "@dazzling666" }, { name: "xv", t1: "@xdkak", t2: "@woodyxx" }, { name: "KS", t1: "@only_deprescore", t2: "@senyaferz" }, { name: "Манчестер Юнайтед", t1: "@cutieseattle", t2: "@fimiguerreroo" }, { name: "Зайдём с легитом", t1: "@abayuzer", t2: "@sanyalegenda_" }, { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" }, { name: "Богдан тащи", t1: "@tr1ppppppp", t2: "@weaknessinheart" }, { name: "Наследство", t1: "@ventilyator_", t2: "@inderitance_1" }, { name: "фо / фе", t1: "@forzinio", t2: "@bratforzin" }, { name: "KwizixdxDream", t1: "@kwizixd.", t2: "@kemal_berzloy" }, { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" }, { name: "hrs", t1: "@awarano", t2: "@iuri07576" }, { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" }, { name: "Haroldwizzex", t1: "@haroku", t2: "@immportal_immportal" }, { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" }, { name: "TD", t1: "@thunglov.0", t2: "@ya.demid" }, { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" }, { name: "nasvai", t1: "@ebnutyi", t2: "@posyabekich" }, { name: "хеллуин насвай", t1: "@excellentswet", t2: "@fl3xtro" }, { name: "TF", t1: "@zeromeoness.", t2: "@flensy2" }, { name: "Империя Вайтов", t1: "@radgaw9ch", t2: "@meow7404" }, { name: "Не знающие побед", t1: "@kanao_0101", t2: "@nasvai_." }
         ];
 
-        const teamsRound1 = teamsDB.slice(0, 32);
-        const teamsRound2 = teamsDB.slice(32, 48);
+        function copyDs(tag) { navigator.clipboard.writeText(tag); alert("Discord тег " + tag + " скопирован!"); }
 
         function drawSide(containerId, teamsR1, teamsR2) {
             const container = document.getElementById(containerId);
-            const sideStages = [ { title: "1/32 Финала", matches: 8 }, { title: "1/16 Финала", matches: 8 }, { title: "1/8 Финала", matches: 4 }, { title: "1/4 Финала", matches: 2 }, { title: "Полуфинал", matches: 1 } ];
-            let r1Idx = 0; let r2Idx = 0;
+            const sideStages = [ { title: "1/32", matches: 8 }, { title: "1/16", matches: 8 }, { title: "1/8", matches: 4 }, { title: "1/4", matches: 2 }, { title: "Полуфинал", matches: 1 } ];
+            let r1Idx = 0, r2Idx = 0;
             sideStages.forEach((stage, sIdx) => {
                 const round = document.createElement('div'); round.className = 'round';
                 round.innerHTML = `<div class="round-title">${stage.title}</div>`;
@@ -259,10 +209,10 @@
                     const match = document.createElement('div'); match.className = 'match';
                     for (let j = 0; j < 2; j++) {
                         const team = document.createElement('div'); team.className = 'team';
-                        let name = "TBD", score = "-";
-                        if (sIdx === 0) { name = teamsR1[r1Idx].name; score = "0"; team.dataset.t1 = teamsR1[r1Idx].t1; team.dataset.t2 = teamsR1[r1Idx].t2; r1Idx++; }
-                        else if (sIdx === 1 && j === 1) { name = teamsR2[r2Idx].name; score = "0"; team.dataset.t1 = teamsR2[r2Idx].t1; team.dataset.t2 = teamsR2[r2Idx].t2; r2Idx++; }
-                        team.dataset.name = name; team.innerHTML = `<span class="team-name">${name}</span><span class="score">${score}</span>`;
+                        let name = "TBD";
+                        if (sIdx === 0) { name = teamsR1[r1Idx].name; team.dataset.t1 = teamsR1[r1Idx].t1; team.dataset.t2 = teamsR1[r1Idx].t2; r1Idx++; }
+                        else if (sIdx === 1 && j === 1) { name = teamsR2[r2Idx].name; team.dataset.t1 = teamsR2[r2Idx].t1; team.dataset.t2 = teamsR2[r2Idx].t2; r2Idx++; }
+                        team.dataset.name = name; team.innerHTML = `<span class="team-name">${name}</span><span class="score">0</span>`;
                         match.appendChild(team);
                     }
                     round.appendChild(match);
@@ -270,29 +220,22 @@
                 container.appendChild(round);
             });
         }
-        drawSide('bracket-left', teamsRound1.slice(0, 16), teamsRound2.slice(0, 8));
-        drawSide('bracket-right', teamsRound1.slice(16, 32), teamsRound2.slice(8, 16));
+        drawSide('bracket-left', teamsDB.slice(0, 16), teamsDB.slice(32, 40));
+        drawSide('bracket-right', teamsDB.slice(16, 32), teamsDB.slice(40, 48));
 
-        const tm = document.getElementById("infoModal"), rm = document.getElementById("rulesModal");
-        document.getElementById("openRules").onclick = () => rm.style.display = "flex";
-        document.getElementById("closeRules").onclick = () => rm.style.display = "none";
-        document.getElementById("closeTeam").onclick = () => tm.style.display = "none";
         document.querySelectorAll('.team').forEach(t => t.onclick = () => {
-            if (t.dataset.name === "TBD" || !t.dataset.t1) return;
+            if (t.dataset.name === "TBD") return;
             document.getElementById("modalTitle").innerText = t.dataset.name;
-            document.getElementById("modalPlayers").innerHTML = `
-                <div class="modal-ds-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div>
-                <div class="modal-ds-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>
-            `;
-            tm.style.display = "flex";
+            document.getElementById("modalPlayers").innerHTML = `<div class="modal-ds-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div><div class="modal-ds-tag"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>`;
+            document.getElementById('infoModal').style.display = 'flex';
         });
-        window.onclick = e => { if (e.target == tm) tm.style.display = "none"; if (e.target == rm) rm.style.display = "none"; };
+
         const slider = document.getElementById('scroll-area');
         let isDown = false, startX, scrollLeft;
-        slider.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-        slider.addEventListener('mouseleave', () => isDown = false);
-        slider.addEventListener('mouseup', () => isDown = false);
-        slider.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+        slider.onmousedown = e => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; };
+        slider.onmouseleave = () => isDown = false;
+        slider.onmouseup = () => isDown = false;
+        slider.onmousemove = e => { if (!isDown) return; e.preventDefault(); slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 2; };
     </script>
 </body>
 </html>
