@@ -99,9 +99,16 @@
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 13px; }
         .gc-amount { color: #ffcc00; font-weight: bold; }
 
+        /* Модалки */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: rgba(20, 20, 20, 0.95); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
+        .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
+        
+        /* Стили для полного списка правил */
+        .rules-list ol { padding-left: 20px; margin: 0; }
+        .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
+        .rules-list .note { color: #bbb; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #444; padding-left: 8px; }
     </style>
 </head>
 <body>
@@ -219,7 +226,34 @@
         </div>
     </div>
 
-    <div id="rulesModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('rulesModal').style.display='none'">&times;</span><h2>Rules</h2><p style="font-size:14px;">Полные правила доступны в Discord канале.</p></div></div>
+    <div id="rulesModal" class="modal">
+        <div class="modal-content rules-content">
+            <span class="close" onclick="document.getElementById('rulesModal').style.display='none'">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px;">Tournament Rules</h2>
+            <div class="rules-list">
+                <ol>
+                    <li>Обязательный полный фрапс с захода в игру <span class="note">(Если фрапса не будет то переигровка или же АП). Примечание: фрапс с меню телефона, шторка, активные вкладки. Примечание 2: секундомер точного времени на экране.</span></li>
+                    <li>Хиллки/Сбив анимки при согласии двух сторон.</li>
+                    <li>Оружие только Deagle.</li>
+                    <li>При подозрении на софт/IOS — проверка (отказ = АП).</li>
+                    <li>Стороны сами выбирают сервер.</li>
+                    <li>Кулаки разрешены (без фанатизма).</li>
+                    <li>Локация ЛСП - лесопилка.</li>
+                    <li>Организатор вправе менять правила без разъяснений.</li>
+                    <li>Организатор не выдает оружие. Побеждает выживший.</li>
+                    <li>Названия команд без осков и родни.</li>
+                    <li>Игра не более 15 минут.</li>
+                    <li>Запрещено тянуть игру. <span class="note">Защита не более 3 мин на одной позиции.</span></li>
+                    <li>Неуважение к администрации — дисквалификация.</li>
+                    <li>Запрещены труднодоступные места (лг, хг).</li>
+                    <li>Следящие вправе просить откат без объяснения причин.</li>
+                    <li>Хранить фрапс до вынесения вердикта.</li>
+                    <li>Запрещены твинки и подставные лица — вечный бан.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
     <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
 
     <script>
@@ -249,7 +283,7 @@
                     }
                     round.appendChild(match);
                 }
-                container.appendChild(round); // Теперь используется только appendChild, поэтому порядок правильный
+                container.appendChild(round);
             });
         }
         drawSide('bracket-left', teamsDB.slice(0, 16), teamsDB.slice(32, 40));
