@@ -54,8 +54,19 @@
         }
         .rules-btn:hover { background-color: #ff1a1a; transform: scale(1.05); }
 
-        /* --- СЕТКА --- */
-        .bracket-wrapper { width: 100%; overflow-x: auto; padding-bottom: 30px; cursor: grab; position: relative; z-index: 1; }
+        /* --- СЕТКА И КАСТОМНЫЙ СКРОЛЛБАР --- */
+        .bracket-wrapper { 
+            width: 100%; overflow-x: auto; padding-bottom: 30px; cursor: grab; position: relative; z-index: 1; 
+            scrollbar-width: thin; /* Для Firefox */
+            scrollbar-color: rgba(42, 42, 42, 0.9) rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Стилизация скроллбара для Chrome, Edge, Safari */
+        .bracket-wrapper::-webkit-scrollbar { height: 8px; }
+        .bracket-wrapper::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.4); border-radius: 10px; }
+        .bracket-wrapper::-webkit-scrollbar-thumb { background: rgba(50, 50, 50, 0.9); border-radius: 10px; border: 1px solid rgba(0,0,0,0.5); }
+        .bracket-wrapper::-webkit-scrollbar-thumb:hover { background: rgba(80, 80, 80, 1); }
+
         .bracket-container { display: flex; min-width: max-content; justify-content: center; align-items: center; padding: 0 50px; }
         .side-bracket { display: flex; align-items: center; }
         .side-bracket.right { flex-direction: row-reverse; }
@@ -99,13 +110,11 @@
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 13px; }
         .gc-amount { color: #ffcc00; font-weight: bold; }
 
-        /* Модалки */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: rgba(20, 20, 20, 0.95); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
         .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
         
-        /* Стили для полного списка правил */
         .rules-list ol { padding-left: 20px; margin: 0; }
         .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
         .rules-list .note { color: #bbb; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #444; padding-left: 8px; }
@@ -178,30 +187,19 @@
             <div class="curators-tier">
                 <div class="curator-card">
                     <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@wqqq04</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links">
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wqqq04');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wqqq04</a>
-                    </div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wqqq04');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wqqq04</a></div>
                 </div>
-
                 <div class="curator-card">
                     <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@notreuside</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links">
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@notreuside');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @notreuside</a>
-                    </div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@notreuside');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @notreuside</a></div>
                 </div>
-
                 <div class="curator-card">
                     <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@.fuggig</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links">
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@.fuggig');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @.fuggig</a>
-                    </div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@.fuggig');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @.fuggig</a></div>
                 </div>
-
                 <div class="curator-card">
                     <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@tortuna812</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links">
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@tortuna812');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @tortuna812</a>
-                    </div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@tortuna812');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @tortuna812</a></div>
                 </div>
             </div>
 
