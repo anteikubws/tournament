@@ -54,14 +54,12 @@
         }
         .rules-btn:hover { background-color: #ff1a1a; transform: scale(1.05); }
 
-        /* --- СЕТКА И КАСТОМНЫЙ СКРОЛЛБАР --- */
         .bracket-wrapper { 
             width: 100%; overflow-x: auto; padding-bottom: 30px; cursor: grab; position: relative; z-index: 1; 
-            scrollbar-width: thin; /* Для Firefox */
+            scrollbar-width: thin;
             scrollbar-color: rgba(42, 42, 42, 0.9) rgba(0, 0, 0, 0.3);
         }
         
-        /* Стилизация скроллбара для Chrome, Edge, Safari */
         .bracket-wrapper::-webkit-scrollbar { height: 8px; }
         .bracket-wrapper::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.4); border-radius: 10px; }
         .bracket-wrapper::-webkit-scrollbar-thumb { background: rgba(50, 50, 50, 0.9); border-radius: 10px; border: 1px solid rgba(0,0,0,0.5); }
@@ -70,12 +68,12 @@
         .bracket-container { display: flex; min-width: max-content; justify-content: center; align-items: center; padding: 0 50px; }
         .side-bracket { display: flex; align-items: center; }
         .side-bracket.right { flex-direction: row-reverse; }
-        .round { display: flex; flex-direction: column; width: 200px; margin: 0 25px; justify-content: space-around; height: 100%; }
+        .round { display: flex; flex-direction: column; width: 200px; margin: 0 25px; justify-content: space-around; min-height: 1200px; }
         .round-title { text-align: center; text-transform: uppercase; font-size: 11px; color: #fff; background: rgba(230,0,0,0.2); padding: 5px 0; border-radius: 4px; margin-bottom: 15px; font-weight: 800; backdrop-filter: blur(2px); }
         .match { background: var(--card-bg); border: 1px solid var(--border-color); margin: 8px 0; border-radius: 6px; position: relative; min-height: 44px; backdrop-filter: blur(10px); }
         .side-bracket.left .match { border-left: 3px solid var(--accent-color); }
         .side-bracket.right .match { border-right: 3px solid var(--accent-color); }
-        .team { padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 13px; cursor: pointer; height: 20px; }
+        .team { padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 13px; cursor: pointer; height: 35px; }
         .team-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px; font-weight: 600; }
         .score { background: #e60000; padding: 1px 6px; border-radius: 3px; font-weight: 800; color: #fff; font-size: 10px; }
 
@@ -84,7 +82,6 @@
         .prize-gold { color: var(--gold-color); font-weight: 900; font-size: 20px; margin-bottom: 12px; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
         .prize-silver { color: var(--silver-color); font-weight: 800; font-size: 18px; margin-top: 12px; text-shadow: 0 0 8px rgba(192, 192, 192, 0.4); }
 
-        /* --- КУРАТОРЫ (ПИРАМИДА) --- */
         .curators-section { width: 100%; max-width: 1000px; margin-top: 50px; position: relative; z-index: 1; text-align: center; }
         .curators-pyramid { display: flex; flex-direction: column; gap: 20px; align-items: center; padding-bottom: 40px; }
         .curators-tier { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
@@ -101,9 +98,7 @@
         .curator-links { display: flex; flex-direction: column; gap: 8px; padding: 12px; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border-color); }
         .contact-row { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; text-decoration: none; color: #eee; }
         .contact-row i { width: 16px; text-align: center; }
-        .contact-row:hover { color: #fff; }
 
-        /* Таблица наград */
         .awards-container { width: 100%; max-width: 800px; margin-top: 30px; position: relative; z-index: 1; padding-bottom: 50px; }
         .table-card { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); border-radius: 6px; padding: 20px; backdrop-filter: blur(10px); }
         table { width: 100%; border-collapse: collapse; }
@@ -114,10 +109,6 @@
         .modal-content { background: rgba(20, 20, 20, 0.95); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
         .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
-        
-        .rules-list ol { padding-left: 20px; margin: 0; }
-        .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
-        .rules-list .note { color: #bbb; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #444; padding-left: 8px; }
     </style>
 </head>
 <body>
@@ -128,8 +119,8 @@
             Anteiku 2026 March Duo Tournament
         </h1>
         <div class="social-links">
-            <a href="https://t.me/byanteiku" target="_blank"><i class="fa-brands fa-telegram"></i> Телеграм канал Anteiku</a>
-            <a href="https://discord.gg/qgVS7gaxf" target="_blank"><i class="fa-brands fa-discord"></i> Дискорд канал Anteiku</a>
+            <a href="https://t.me/byanteiku" target="_blank"><i class="fa-brands fa-telegram"></i> Телеграм Anteiku</a>
+            <a href="https://discord.gg/qgVS7gaxf" target="_blank"><i class="fa-brands fa-discord"></i> Дискорд Anteiku</a>
         </div>
     </div>
 
@@ -152,101 +143,18 @@
         </div>
     </div>
 
-    <section class="curators-section">
-        <h2 style="text-transform:uppercase; font-size:18px; margin-bottom:20px;">Кураторы турнира</h2>
-        <div class="curators-pyramid">
-            
-            <div class="curators-tier">
-                <div class="curator-card">
-                    <div class="curator-header role-org-line"><span class="curator-name" style="color:var(--org-color)">@wincommunity</span><span class="curator-role">Организатор</span></div>
-                    <div class="curator-links">
-                        <a href="https://t.me/nepecnume" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @nepecnume</a>
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wincommunity');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wincommunity</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="curators-tier">
-                <div class="curator-card">
-                    <div class="curator-header role-main-line"><span class="curator-name" style="color:var(--main-admin-color)">@yabezymecc</span><span class="curator-role">Основной следящий</span></div>
-                    <div class="curator-links">
-                        <a href="https://t.me/teisheirra" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @teisheirra</a>
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@yabezymecc');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @yabezymecc</a>
-                    </div>
-                </div>
-
-                <div class="curator-card">
-                    <div class="curator-header role-main-line"><span class="curator-name" style="color:var(--main-admin-color)">@londonromantic</span><span class="curator-role">Основной следящий</span></div>
-                    <div class="curator-links">
-                        <a href="https://t.me/londoncavalier" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @londoncavalier</a>
-                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@londonromantic');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @londonromantic</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="curators-tier">
-                <div class="curator-card">
-                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@wqqq04</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wqqq04');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wqqq04</a></div>
-                </div>
-                <div class="curator-card">
-                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@notreuside</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@notreuside');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @notreuside</a></div>
-                </div>
-                <div class="curator-card">
-                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@.fuggig</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@.fuggig');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @.fuggig</a></div>
-                </div>
-                <div class="curator-card">
-                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@tortuna812</span><span class="curator-role">Следящий</span></div>
-                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@tortuna812');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @tortuna812</a></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="awards-container">
-        <div class="table-card">
-            <h2 style="text-align:center; text-transform:uppercase; font-size:16px;">Tournament Awards</h2>
-            <table>
-                <thead><tr><th>Стадия</th><th>MVP</th><th>EVP</th><th>Награды</th></tr></thead>
-                <tbody>
-                    <tr><td>1 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>2 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>3 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>4 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>5 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>6 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>Итоги турнира</td><td>NC</td><td>NC</td><td class="gc-amount">500 GC</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <div id="rulesModal" class="modal">
         <div class="modal-content rules-content">
             <span class="close" onclick="document.getElementById('rulesModal').style.display='none'">&times;</span>
             <h2 style="text-align: center; margin-bottom: 20px;">Tournament Rules</h2>
             <div class="rules-list">
                 <ol>
-                    <li>Обязательный полный фрапс с захода в игру <span class="note">(Если фрапса не будет то переигровка или же АП). Примечание: фрапс с меню телефона, шторка, активные вкладки. Примечание 2: секундомер точного времени на экране.</span></li>
-                    <li>Хиллки/Сбив анимки при согласии двух сторон.</li>
+                    <li>Обязательный полный фрапс с захода в игру.</li>
+                    <li>Хиллки/Сбив анимки при согласии сторон.</li>
                     <li>Оружие только Deagle.</li>
-                    <li>При подозрении на софт/IOS — проверка (отказ = АП).</li>
-                    <li>Стороны сами выбирают сервер.</li>
-                    <li>Кулаки разрешены (без фанатизма).</li>
+                    <li>При подозрении на софт — проверка.</li>
                     <li>Локация ЛСП - лесопилка.</li>
-                    <li>Организатор вправе менять правила без разъяснений.</li>
-                    <li>Организатор не выдает оружие. Побеждает выживший.</li>
-                    <li>Названия команд без осков и родни.</li>
-                    <li>Игра не более 15 минут.</li>
-                    <li>Запрещено тянуть игру. <span class="note">Защита не более 3 мин на одной позиции.</span></li>
-                    <li>Неуважение к администрации — дисквалификация.</li>
-                    <li>Запрещены труднодоступные места (лг, хг).</li>
-                    <li>Следящие вправе просить откат без объяснения причин.</li>
-                    <li>Хранить фрапс до вынесения вердикта.</li>
-                    <li>Запрещены твинки и подставные лица — вечный бан.</li>
+                    <li>Запрещены твинки и подставные лица.</li>
                 </ol>
             </div>
         </div>
@@ -256,16 +164,82 @@
 
     <script>
         const teamsDB = [
-            { name: "QL", t1: "@mincxxx", t2: "@consiencenotfound" }, { name: "fv", t1: "@yyvv26", t2: "@izixizix" }, { name: "Восхитительные", t1: "@wast3dw1ll", t2: "@ismzxc" }, { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" }, { name: "nestrxndzsexysw", t1: "@only_nestrxndz", t2: "@torexzz." }, { name: "Ebem", t1: "@dizkoverr", t2: "@jefre_epstein" }, { name: "1winbetboom team", t1: "@quancorace", t2: "@marceline33" }, { name: "ZhasBe", t1: "@bernardszd", t2: "@dzhasikk" }, { name: "TR", t1: "@pavelmatvee11", t2: "@reinn666" }, { name: "Газан", t1: "@.maksim.dark", t2: "@fairikun" }, { name: "Mover", t1: "@tezikvalotondor", t2: "@dragon_mover" }, { name: "wp", t1: "@m9wkh", t2: "@phoenixxst." }, { name: "suzuki", t1: "@lonbbos", t2: "@bairon0364" }, { name: "Вотч", t1: "@only_winstrike", t2: "@only_dema" }, { name: "Бич и проф", t1: "@blagopodobniy", t2: "@.mqswkks" }, { name: "bg", t1: "@gracioc", t2: "@flerr1xx" }, { name: "Qwrszzzx", t1: "@qwrszxsky", t2: "@jonnybrayn_09" }, { name: "Узбек сила", t1: "@triks_vpotoke", t2: "@se00000mns6" }, { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." }, { name: "faisted", t1: "@faistedrom", t2: "@imm0rtal666" }, { name: "Незнаю", t1: "@deleted.user0011", t2: "@foster_solo" }, { name: "Инвалиды Вася и Гася", t1: "@tsoufall", t2: "@wiliam_glockovv" }, { name: "Бананы", t1: "@andriudeiner", t2: "@r1ce001" }, { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" }, { name: "Furious top 1", t1: "@furious_official", t2: "@monte00973" }, { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" }, { name: "Go", t1: "@gggg88ihhjj_55366", t2: "@dazzling666" }, { name: "xv", t1: "@xdkak", t2: "@woodyxx" }, { name: "KS", t1: "@only_deprescore", t2: "@senyaferz" }, { name: "Манчестер Юнайтед", t1: "@cutieseattle", t2: "@fimiguerreroo" }, { name: "Зайдём с легитом", t1: "@abayuzer", t2: "@sanyalegenda_" }, { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" }, { name: "Богдан тащи", t1: "@tr1ppppppp", t2: "@weaknessinheart" }, { name: "Наследство", t1: "@ventilyator_", t2: "@inderitance_1" }, { name: "фо / фе", t1: "@forzinio", t2: "@bratforzin" }, { name: "KwizixdxDream", t1: "@kwizixd.", t2: "@kemal_berzloy" }, { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" }, { name: "hrs", t1: "@awarano", t2: "@iuri07576" }, { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" }, { name: "Haroldwizzex", t1: "@haroku", t2: "@immportal_immportal" }, { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" }, { name: "TD", t1: "@thunglov.0", t2: "@ya.demid" }, { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" }, { name: "nasvai", t1: "@ebnutyi", t2: "@posyabekich" }, { name: "хеллуин насвай", t1: "@excellentswet", t2: "@fl3xtro" }, { name: "TF", t1: "@zeromeoness.", t2: "@flensy2" }, { name: "Империя Вайтов", t1: "@radgaw9ch", t2: "@meow7404" }, { name: "Не знающие побед", t1: "@kanao_0101", t2: "@nasvai_." }
+            { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." },
+            { name: "фо / фе", t1: "@forzinio", t2: "@bratforzin" },
+            { name: "ZhasBe", t1: "@bernardszd", t2: "@dzhasikk" },
+            { name: "fv", t1: "@yyvv26", t2: "@izixizix" },
+            { name: "bg", t1: "@gracioc", t2: "@flerr1xx" },
+            { name: "Go", t1: "@gggg88ihhjj_55366", t2: "@dazzling666" },
+            { name: "Ebem", t1: "@dizkoverr", t2: "@jefre_epstein" },
+            { name: "suzuki", t1: "@lonbbos", t2: "@bairon0364" },
+            { name: "Вотч", t1: "@only_winstrike", t2: "@only_dema" },
+            { name: "Зайдём с легитом", t1: "@abayuzer", t2: "@sanyalegenda_" },
+            { name: "TR", t1: "@pavelmatvee11", t2: "@reinn666" },
+            { name: "#жировая_складка", t1: "@tripplesix999", t2: "@adrizexx" },
+            { name: "Богдан тащи", t1: "@tr1ppppppp", t2: "@weaknessinheart" },
+            { name: "Friki", t1: "@nn__nn__nn", t2: "@millionrraresniy_01823" },
+            { name: "KS", t1: "@only_deprescore", t2: "@senyaferz" },
+            { name: "Не знающие побед", t1: "@kanao_0101", t2: "@nasvai_." },
+            { name: "Qwrszzzx", t1: "@qwrszxsky", t2: "@jonnybrayn_09" },
+            { name: "Бананы", t1: "@andriudeiner", t2: "@r1ce001" },
+            { name: "wp", t1: "@m9wkh", t2: "@phoenixxst." },
+            { name: "Наследство", t1: "@ventilyator_", t2: "@inderitance_1" },
+            { name: "faisted", t1: "@faistedrom", t2: "@imm0rtal666" },
+            { name: "Незнаю", t1: "@deleted.user0011", t2: "@foster_solo" },
+            { name: "Haroldwizzex", t1: "@haroku", t2: "@immportal_immportal" },
+            { name: "Furious top 1", t1: "@furious_official", t2: "@monte00973" },
+            { name: "Бич и проф", t1: "@blagopodobniy", t2: "@.mqswkks" },
+            { name: "nasvai", t1: "@ebnutyi", t2: "@posyabekich" },
+            { name: "Восхитительные", t1: "@wast3dw1ll", t2: "@ismzxc" },
+            { name: "Манчестер Юнайтед", t1: "@cutieseattle", t2: "@fimiguerreroo" },
+            { name: "1winbetboom team", t1: "@quancorace", t2: "@marceline33" },
+            { name: "KwizixdxDream", t1: "@kwizixd.", t2: "@kemal_berzloy" },
+            { name: "Название", t1: "@mincxxx", t2: "@consiencenotfound" },
+            { name: "TD", t1: "@thunglov.0", t2: "@ya.demid" },
+            { name: "хеллуин насвай", t1: "@excellentswet", t2: "@fl3xtro" },
+            { name: "TF", t1: "@zeromeoness.", t2: "@flensy2" },
+            { name: "Западной Казахстан", t1: "@nightshade.o1", t2: "@teq1la0" },
+            { name: "Инвалиды Вася и Гася", t1: "@tsoufall", t2: "@wiliam_glockovv" },
+            { name: "Mover", t1: "@tezikvalotondor", t2: "@dragon_mover" },
+            { name: "Фуникс", t1: "@naimont_8080", t2: "@byanxious" },
+            { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" },
+            { name: "Узбек сила", t1: "@triks_vpotoke", t2: "@se00000mns6" },
+            { name: "Кмс по отсос", t1: "@wqqq04", t2: "@tyfuss0" },
+            { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" },
+            { name: "Газан", t1: "@.maksim.dark", t2: "@fairikun" },
+            { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" },
+            { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" },
+            { name: "Ендермен", t1: "@a1_sxxx", t2: "@martin_quaxside" },
+            { name: "Империя Вайтов", t1: "@radgaw9ch", t2: "@meow7404" },
+            { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" },
+            { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" },
+            { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" },
+            { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" },
+            { name: "hrs", t1: "@awarano", t2: "@iuri07576" },
+            { name: "Xv", t1: "@xdkak", t2: "@woodyxx" },
+            { name: "Элитные проститутки", t1: "@onlyypotok", t2: "@only_feliks" },
+            { name: "Потные 777", t1: "@nononet_777", t2: "@incosloweyn" },
+            { name: "Alpha", t1: "@xavasaki1", t2: "@torexzz" },
+            { name: "Hunters", t1: "@forever_prime.", t2: "@jauxyz" },
+            { name: "BH", t1: "@begremyke666", t2: "@hik1ru" },
+            { name: "Пивные бочки", t1: "@jusiqq", t2: "@unknownup666" },
+            { name: "Вип казак", t1: "@only_honestly", t2: "@frendigs" },
+            { name: "Joju", t1: "@andreymaximov_", t2: "@only_dag" },
+            { name: "Топ", t1: "@solo_rich01_44802", t2: "@.bakiezz" },
+            { name: "Клубника", t1: "@byjusik", t2: "@byquspattimon" },
+            { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
-        const teamsRound1 = teamsDB.slice(0, 32);
-        const teamsRound2 = teamsDB.slice(32, 48);
-
-        function drawSide(containerId, teamsR1, teamsR2) {
+        function drawSide(containerId, sideTeams) {
             const container = document.getElementById(containerId);
-            const stages = [ { title: "1/32", matches: 8 }, { title: "1/16", matches: 8 }, { title: "1/8", matches: 4 }, { title: "1/4", matches: 2 }, { title: "Полуфинал", matches: 1 } ];
-            let r1Idx = 0, r2Idx = 0;
+            const stages = [
+                { title: "1/32", matches: 16 },
+                { title: "1/16", matches: 8 },
+                { title: "1/8", matches: 4 },
+                { title: "1/4", matches: 2 },
+                { title: "Полуфинал", matches: 1 }
+            ];
+            let teamIdx = 0;
             stages.forEach((stage, sIdx) => {
                 const round = document.createElement('div'); round.className = 'round';
                 round.innerHTML = `<div class="round-title">${stage.title}</div>`;
@@ -274,9 +248,14 @@
                     for (let j = 0; j < 2; j++) {
                         const team = document.createElement('div'); team.className = 'team';
                         let name = "TBD";
-                        if (sIdx === 0) { name = teamsR1[r1Idx].name; team.dataset.t1 = teamsR1[r1Idx].t1; team.dataset.t2 = teamsR1[r1Idx].t2; r1Idx++; }
-                        else if (sIdx === 1 && j === 1) { name = teamsR2[r2Idx].name; team.dataset.t1 = teamsR2[r2Idx].t1; team.dataset.t2 = teamsR2[r2Idx].t2; r2Idx++; }
-                        team.dataset.name = name; team.innerHTML = `<span class="team-name">${name}</span><span class="score">0</span>`;
+                        if (sIdx === 0) {
+                            name = sideTeams[teamIdx].name;
+                            team.dataset.t1 = sideTeams[teamIdx].t1;
+                            team.dataset.t2 = sideTeams[teamIdx].t2;
+                            teamIdx++;
+                        }
+                        team.dataset.name = name;
+                        team.innerHTML = `<span class="team-name">${name}</span><span class="score">0</span>`;
                         match.appendChild(team);
                     }
                     round.appendChild(match);
@@ -284,13 +263,17 @@
                 container.appendChild(round);
             });
         }
-        drawSide('bracket-left', teamsDB.slice(0, 16), teamsDB.slice(32, 40));
-        drawSide('bracket-right', teamsDB.slice(16, 32), teamsDB.slice(40, 48));
+
+        // Распределяем 64 команды: первые 32 на левое крыло, вторые 32 на правое
+        drawSide('bracket-left', teamsDB.slice(0, 32));
+        drawSide('bracket-right', teamsDB.slice(32, 64));
 
         document.querySelectorAll('.team').forEach(t => t.onclick = () => {
             if (t.dataset.name === "TBD") return;
             document.getElementById("modalTitle").innerText = t.dataset.name;
-            document.getElementById("modalPlayers").innerHTML = `<div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div><div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>`;
+            document.getElementById("modalPlayers").innerHTML = `
+                <div style="background:rgba(0,136,204,0.1); color:#0088cc; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(0,136,204,0.3); font-weight:600;"><i class="fa-brands fa-telegram"></i> ${t.dataset.t1}</div>
+                <div style="background:rgba(0,136,204,0.1); color:#0088cc; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(0,136,204,0.3); font-weight:600;"><i class="fa-brands fa-telegram"></i> ${t.dataset.t2}</div>`;
             document.getElementById('infoModal').style.display = 'flex';
         });
 
