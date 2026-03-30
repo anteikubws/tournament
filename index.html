@@ -54,6 +54,7 @@
         }
         .rules-btn:hover { background-color: #ff1a1a; transform: scale(1.05); }
 
+        /* --- СЕТКА И КАСТОМНЫЙ СКРОЛЛБАР --- */
         .bracket-wrapper { 
             width: 100%; overflow-x: auto; padding-bottom: 30px; cursor: grab; position: relative; z-index: 1; 
             scrollbar-width: thin;
@@ -65,10 +66,10 @@
         .bracket-wrapper::-webkit-scrollbar-thumb { background: rgba(50, 50, 50, 0.9); border-radius: 10px; border: 1px solid rgba(0,0,0,0.5); }
         .bracket-wrapper::-webkit-scrollbar-thumb:hover { background: rgba(80, 80, 80, 1); }
 
-        .bracket-container { display: flex; min-width: max-content; justify-content: center; align-items: center; padding: 0 50px; }
-        .side-bracket { display: flex; align-items: center; }
+        .bracket-container { display: flex; min-width: max-content; justify-content: center; align-items: stretch; padding: 0 50px; }
+        .side-bracket { display: flex; align-items: stretch; padding: 20px 0; }
         .side-bracket.right { flex-direction: row-reverse; }
-        .round { display: flex; flex-direction: column; width: 200px; margin: 0 25px; justify-content: space-around; min-height: 1200px; }
+        .round { display: flex; flex-direction: column; width: 200px; margin: 0 25px; justify-content: space-around; }
         .round-title { text-align: center; text-transform: uppercase; font-size: 11px; color: #fff; background: rgba(230,0,0,0.2); padding: 5px 0; border-radius: 4px; margin-bottom: 15px; font-weight: 800; backdrop-filter: blur(2px); }
         .match { background: var(--card-bg); border: 1px solid var(--border-color); margin: 8px 0; border-radius: 6px; position: relative; min-height: 44px; backdrop-filter: blur(10px); }
         .side-bracket.left .match { border-left: 3px solid var(--accent-color); }
@@ -77,11 +78,12 @@
         .team-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px; font-weight: 600; }
         .score { background: #e60000; padding: 1px 6px; border-radius: 3px; font-weight: 800; color: #fff; font-size: 10px; }
 
-        .central-final { width: 300px; display: flex; flex-direction: column; align-items: center; margin: 0 40px; }
+        .central-final { width: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 40px; }
         .final-match { width: 100%; background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 8px; box-shadow: 0 0 25px rgba(230, 0, 0, 0.4); padding: 20px; text-align: center; backdrop-filter: blur(10px); }
         .prize-gold { color: var(--gold-color); font-weight: 900; font-size: 20px; margin-bottom: 12px; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
         .prize-silver { color: var(--silver-color); font-weight: 800; font-size: 18px; margin-top: 12px; text-shadow: 0 0 8px rgba(192, 192, 192, 0.4); }
 
+        /* --- КУРАТОРЫ (ПИРАМИДА) --- */
         .curators-section { width: 100%; max-width: 1000px; margin-top: 50px; position: relative; z-index: 1; text-align: center; }
         .curators-pyramid { display: flex; flex-direction: column; gap: 20px; align-items: center; padding-bottom: 40px; }
         .curators-tier { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
@@ -98,7 +100,9 @@
         .curator-links { display: flex; flex-direction: column; gap: 8px; padding: 12px; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border-color); }
         .contact-row { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; text-decoration: none; color: #eee; }
         .contact-row i { width: 16px; text-align: center; }
+        .contact-row:hover { color: #fff; }
 
+        /* Таблица наград */
         .awards-container { width: 100%; max-width: 800px; margin-top: 30px; position: relative; z-index: 1; padding-bottom: 50px; }
         .table-card { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); border-radius: 6px; padding: 20px; backdrop-filter: blur(10px); }
         table { width: 100%; border-collapse: collapse; }
@@ -109,6 +113,10 @@
         .modal-content { background: rgba(20, 20, 20, 0.95); border: 2px solid var(--accent-color); padding: 30px; width: 100%; max-width: 350px; border-radius: 12px; text-align: center; position: relative; }
         .modal-content.rules-content { max-width: 600px; text-align: left; max-height: 85vh; overflow-y: auto; padding: 30px; }
         .close { position: absolute; top: 10px; right: 18px; color: #aaa; font-size: 28px; cursor: pointer; }
+        
+        .rules-list ol { padding-left: 20px; margin: 0; }
+        .rules-list ol li { margin-bottom: 12px; color: #fff; font-weight: 500; }
+        .rules-list .note { color: #bbb; display: block; font-size: 13px; font-weight: 400; margin-top: 4px; border-left: 2px solid #444; padding-left: 8px; }
     </style>
 </head>
 <body>
@@ -119,8 +127,8 @@
             Anteiku 2026 March Duo Tournament
         </h1>
         <div class="social-links">
-            <a href="https://t.me/byanteiku" target="_blank"><i class="fa-brands fa-telegram"></i> Телеграм Anteiku</a>
-            <a href="https://discord.gg/qgVS7gaxf" target="_blank"><i class="fa-brands fa-discord"></i> Дискорд Anteiku</a>
+            <a href="https://t.me/byanteiku" target="_blank"><i class="fa-brands fa-telegram"></i> Телеграм канал Anteiku</a>
+            <a href="https://discord.gg/qgVS7gaxf" target="_blank"><i class="fa-brands fa-discord"></i> Дискорд канал Anteiku</a>
         </div>
     </div>
 
@@ -143,18 +151,101 @@
         </div>
     </div>
 
+    <section class="curators-section">
+        <h2 style="text-transform:uppercase; font-size:18px; margin-bottom:20px;">Кураторы турнира</h2>
+        <div class="curators-pyramid">
+            
+            <div class="curators-tier">
+                <div class="curator-card">
+                    <div class="curator-header role-org-line"><span class="curator-name" style="color:var(--org-color)">@wincommunity</span><span class="curator-role">Организатор</span></div>
+                    <div class="curator-links">
+                        <a href="https://t.me/nepecnume" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @nepecnume</a>
+                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wincommunity');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wincommunity</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curators-tier">
+                <div class="curator-card">
+                    <div class="curator-header role-main-line"><span class="curator-name" style="color:var(--main-admin-color)">@yabezymecc</span><span class="curator-role">Основной следящий</span></div>
+                    <div class="curator-links">
+                        <a href="https://t.me/teisheirra" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @teisheirra</a>
+                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@yabezymecc');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @yabezymecc</a>
+                    </div>
+                </div>
+
+                <div class="curator-card">
+                    <div class="curator-header role-main-line"><span class="curator-name" style="color:var(--main-admin-color)">@londonromantic</span><span class="curator-role">Основной следящий</span></div>
+                    <div class="curator-links">
+                        <a href="https://t.me/londoncavalier" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @londoncavalier</a>
+                        <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@londonromantic');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @londonromantic</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curators-tier">
+                <div class="curator-card">
+                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@wqqq04</span><span class="curator-role">Следящий</span></div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@wqqq04');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @wqqq04</a></div>
+                </div>
+                <div class="curator-card">
+                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@notreuside</span><span class="curator-role">Следящий</span></div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@notreuside');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @notreuside</a></div>
+                </div>
+                <div class="curator-card">
+                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@.fuggig</span><span class="curator-role">Следящий</span></div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@.fuggig');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @.fuggig</a></div>
+                </div>
+                <div class="curator-card">
+                    <div class="curator-header"><span class="curator-name" style="color:var(--ds-color)">@tortuna812</span><span class="curator-role">Следящий</span></div>
+                    <div class="curator-links"><a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@tortuna812');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @tortuna812</a></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="awards-container">
+        <div class="table-card">
+            <h2 style="text-align:center; text-transform:uppercase; font-size:16px;">Tournament Awards</h2>
+            <table>
+                <thead><tr><th>Стадия</th><th>MVP</th><th>EVP</th><th>Награды</th></tr></thead>
+                <tbody>
+                    <tr><td>1 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>2 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>3 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>4 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>5 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>6 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>Итоги турнира</td><td>NC</td><td>NC</td><td class="gc-amount">500 GC</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div id="rulesModal" class="modal">
         <div class="modal-content rules-content">
             <span class="close" onclick="document.getElementById('rulesModal').style.display='none'">&times;</span>
             <h2 style="text-align: center; margin-bottom: 20px;">Tournament Rules</h2>
             <div class="rules-list">
                 <ol>
-                    <li>Обязательный полный фрапс с захода в игру.</li>
-                    <li>Хиллки/Сбив анимки при согласии сторон.</li>
+                    <li>Обязательный полный фрапс с захода в игру <span class="note">(Если фрапса не будет то переигровка или же АП). Примечание: фрапс с меню телефона, шторка, активные вкладки. Примечание 2: секундомер точного времени на экране.</span></li>
+                    <li>Хиллки/Сбив анимки при согласии двух сторон.</li>
                     <li>Оружие только Deagle.</li>
-                    <li>При подозрении на софт — проверка.</li>
+                    <li>При подозрении на софт/IOS — проверка (отказ = АП).</li>
+                    <li>Стороны сами выбирают сервер.</li>
+                    <li>Кулаки разрешены (без фанатизма).</li>
                     <li>Локация ЛСП - лесопилка.</li>
-                    <li>Запрещены твинки и подставные лица.</li>
+                    <li>Организатор вправе менять правила без разъяснений.</li>
+                    <li>Организатор не выдает оружие. Побеждает выживший.</li>
+                    <li>Названия команд без осков и родни.</li>
+                    <li>Игра не более 15 минут.</li>
+                    <li>Запрещено тянуть игру. <span class="note">Защита не более 3 мин на одной позиции.</span></li>
+                    <li>Неуважение к администрации — дисквалификация.</li>
+                    <li>Запрещены труднодоступные места (лг, хг).</li>
+                    <li>Следящие вправе просить откат без объяснения причин.</li>
+                    <li>Хранить фрапс до вынесения вердикта.</li>
+                    <li>Запрещены твинки и подставные лица — вечный бан.</li>
                 </ol>
             </div>
         </div>
@@ -264,16 +355,16 @@
             });
         }
 
-        // Распределяем 64 команды: первые 32 на левое крыло, вторые 32 на правое
         drawSide('bracket-left', teamsDB.slice(0, 32));
         drawSide('bracket-right', teamsDB.slice(32, 64));
 
         document.querySelectorAll('.team').forEach(t => t.onclick = () => {
             if (t.dataset.name === "TBD") return;
             document.getElementById("modalTitle").innerText = t.dataset.name;
+            // Вернул оригинальный стиль модального окна с иконками Discord
             document.getElementById("modalPlayers").innerHTML = `
-                <div style="background:rgba(0,136,204,0.1); color:#0088cc; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(0,136,204,0.3); font-weight:600;"><i class="fa-brands fa-telegram"></i> ${t.dataset.t1}</div>
-                <div style="background:rgba(0,136,204,0.1); color:#0088cc; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(0,136,204,0.3); font-weight:600;"><i class="fa-brands fa-telegram"></i> ${t.dataset.t2}</div>`;
+                <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div>
+                <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>`;
             document.getElementById('infoModal').style.display = 'flex';
         });
 
