@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anteiku 2026 March Duo Tournament | Сетка</title>
     
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1271837811796082819/1271837813175746620/undefined_-_Imgur_1.png?ex=69cbda44&is=69ca88c4&hm=c7563dd975eea9b4e64b2917f6c43b6ecdbfd5d2145e48034b7b0533d29581ee&">
+    <link rel="icon" type="image/png" href="https://i.yapx.ru/dScLv.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -30,11 +30,17 @@
             color: var(--text-color); font-family: var(--main-font); margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden; width: 100vw; min-height: 100vh; position: relative; background: #000;
+            
+            /* Защита от выделения текста */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://cdn.discordapp.com/attachments/1271549957295444100/1487867564951474287/IMG_20251118_175539_365_edit_68526370671670.jpg?ex=69cab426&is=69c962a6&hm=10e9fd383445ccf9ff943b2ae11294f2fcfe8774803018fa0c66f36c6d95596f&');
+            background-image: url('https://i.yapx.ru/dScNe.jpg');
             background-size: cover; background-position: center; filter: blur(8px) brightness(0.3); transform: scale(1.1); z-index: -1;
         }
 
@@ -74,16 +80,17 @@
         .match { background: var(--card-bg); border: 1px solid var(--border-color); margin: 8px 0; border-radius: 6px; position: relative; min-height: 44px; backdrop-filter: blur(10px); }
         .side-bracket.left .match { border-left: 3px solid var(--accent-color); }
         .side-bracket.right .match { border-right: 3px solid var(--accent-color); }
-        .team { padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 13px; cursor: pointer; height: 35px; }
+        .team { padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 13px; cursor: pointer; height: 35px; transition: color 0.2s; }
         .team-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px; font-weight: 600; }
         .score { background: #e60000; padding: 1px 6px; border-radius: 3px; font-weight: 800; color: #fff; font-size: 10px; }
+        .winner-text { color: var(--gold-color); font-weight: 800; }
 
         .central-final { width: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 40px; }
         .final-match { width: 100%; background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 8px; box-shadow: 0 0 25px rgba(230, 0, 0, 0.4); padding: 20px; text-align: center; backdrop-filter: blur(10px); }
         .prize-gold { color: var(--gold-color); font-weight: 900; font-size: 20px; margin-bottom: 12px; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
         .prize-silver { color: var(--silver-color); font-weight: 800; font-size: 18px; margin-top: 12px; text-shadow: 0 0 8px rgba(192, 192, 192, 0.4); }
 
-        /* --- КУРАТОРЫ (ПИРАМИДА) --- */
+        /* --- КУРАТОРЫ --- */
         .curators-section { width: 100%; max-width: 1000px; margin-top: 50px; position: relative; z-index: 1; text-align: center; }
         .curators-pyramid { display: flex; flex-direction: column; gap: 20px; align-items: center; padding-bottom: 40px; }
         .curators-tier { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
@@ -123,7 +130,7 @@
 
     <div class="header-container">
         <h1>
-            <img src="https://cdn.discordapp.com/attachments/1271837811796082819/1271837813175746620/undefined_-_Imgur_1.png?ex=69cbda44&is=69ca88c4&hm=c7563dd975eea9b4e64b2917f6c43b6ecdbfd5d2145e48034b7b0533d29581ee&" alt="GM" class="title-logo">
+            <img src="https://i.yapx.ru/dScLv.png" alt="GM" class="title-logo">
             Anteiku 2026 March Duo Tournament
         </h1>
         <div class="social-links">
@@ -211,7 +218,7 @@
             <table>
                 <thead><tr><th>Стадия</th><th>MVP</th><th>EVP</th><th>Награды</th></tr></thead>
                 <tbody>
-                    <tr><td>1 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>1 Этап</td><td>@yyvv26</td><td>@hartobietes</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>2 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>3 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>4 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
@@ -254,6 +261,14 @@
     <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
 
     <script>
+        // Скрипт защиты: Блокировка ПКМ и горячих клавиш (F12, Ctrl+Shift+I, Ctrl+U)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || event.keyCode === 123) event.preventDefault();
+            if (event.ctrlKey && event.shiftKey && ['I', 'C', 'J'].includes(event.key.toUpperCase())) event.preventDefault();
+            if (event.ctrlKey && event.key.toUpperCase() === 'U') event.preventDefault();
+        });
+
         const teamsDB = [
             { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." },
             { name: "фо / фе", t1: "@forzinio", t2: "@bratforzin" },
@@ -321,6 +336,14 @@
             { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
+        // Массив победителей 1/32
+        const winnersList = [
+            "HS", "fv", "bg", "suzuki", "Вотч", "#жировая_складка", "Friki", "Не знающие побед", 
+            "Бананы", "wp", "faisted", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", 
+            "TF", "Западной Казахстан", "Mover", "Unknown", "Тирон турма", "gg", "фимоз", "не вудиксы и хдаки", 
+            "Серега акелер", "hrs", "Xv", "Alpha", "BH", "Пивные бочки", "Топ", "Клубника"
+        ];
+
         function drawSide(containerId, sideTeams) {
             const container = document.getElementById(containerId);
             const stages = [
@@ -330,27 +353,53 @@
                 { title: "1/4", matches: 2 },
                 { title: "Полуфинал", matches: 1 }
             ];
-            let teamIdx = 0;
+            
+            let currentStageTeams = [...sideTeams];
+
             stages.forEach((stage, sIdx) => {
                 const round = document.createElement('div'); round.className = 'round';
                 round.innerHTML = `<div class="round-title">${stage.title}</div>`;
+                
+                let nextStageTeams = [];
+
                 for (let i = 0; i < stage.matches; i++) {
                     const match = document.createElement('div'); match.className = 'match';
-                    for (let j = 0; j < 2; j++) {
-                        const team = document.createElement('div'); team.className = 'team';
-                        let name = "TBD";
-                        if (sIdx === 0) {
-                            name = sideTeams[teamIdx].name;
-                            team.dataset.t1 = sideTeams[teamIdx].t1;
-                            team.dataset.t2 = sideTeams[teamIdx].t2;
-                            teamIdx++;
-                        }
-                        team.dataset.name = name;
-                        team.innerHTML = `<span class="team-name">${name}</span><span class="score">0</span>`;
-                        match.appendChild(team);
+                    
+                    let t1Obj = currentStageTeams[i * 2] || null;
+                    let t2Obj = currentStageTeams[i * 2 + 1] || null;
+                    
+                    let t1Name = t1Obj ? t1Obj.name : "TBD";
+                    let t2Name = t2Obj ? t2Obj.name : "TBD";
+
+                    let sc1 = 0, sc2 = 0;
+
+                    // Логика первого раунда: назначение очков и выбор прошедших
+                    if (sIdx === 0) {
+                        if (winnersList.includes(t1Name)) { sc1 = 2; nextStageTeams.push(t1Obj); } 
+                        else if (winnersList.includes(t2Name)) { sc2 = 2; nextStageTeams.push(t2Obj); }
+                        else nextStageTeams.push(null);
                     }
+
+                    // Команда 1
+                    const team1El = document.createElement('div'); team1El.className = 'team';
+                    team1El.dataset.name = t1Name;
+                    if (t1Obj) { team1El.dataset.t1 = t1Obj.t1; team1El.dataset.t2 = t1Obj.t2; }
+                    if (sIdx === 0 && sc1 === 2) team1El.classList.add("winner-text");
+                    team1El.innerHTML = `<span class="team-name">${t1Name}</span><span class="score">${sIdx === 0 ? sc1 : 0}</span>`;
+                    match.appendChild(team1El);
+
+                    // Команда 2
+                    const team2El = document.createElement('div'); team2El.className = 'team';
+                    team2El.dataset.name = t2Name;
+                    if (t2Obj) { team2El.dataset.t1 = t2Obj.t1; team2El.dataset.t2 = t2Obj.t2; }
+                    if (sIdx === 0 && sc2 === 2) team2El.classList.add("winner-text");
+                    team2El.innerHTML = `<span class="team-name">${t2Name}</span><span class="score">${sIdx === 0 ? sc2 : 0}</span>`;
+                    match.appendChild(team2El);
+
                     round.appendChild(match);
                 }
+                
+                currentStageTeams = sIdx === 0 ? nextStageTeams : [];
                 container.appendChild(round);
             });
         }
