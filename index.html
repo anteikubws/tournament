@@ -159,7 +159,7 @@
                 <div class="curator-card">
                     <div class="curator-header role-main-line"><span class="curator-name" style="color:var(--main-admin-color)">@londonromantic</span><span class="curator-role">Основной следящий</span></div>
                     <div class="curator-links">
-                        <a href="https://t.me/londoncavalier" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @londoncavalier</a>
+                        <a href="https://t.me/londoncavalier" target="_blank" class="contact-row"><i class="fa-brands fa-telegram" style="color:var(--tg-color)"></i> @londonromantic</a>
                         <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('@londonromantic');alert('Copied!')" class="contact-row"><i class="fa-brands fa-discord" style="color:var(--ds-color)"></i> @londonromantic</a>
                     </div>
                 </div>
@@ -263,17 +263,15 @@
             { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
-        // Команды с автопоражением (убрали Серегу, оставили hrs)
+        // Команды с автопоражением
         const autoLossTeams = ["hrs"];
 
         // СПИСКИ ПОБЕДИТЕЛЕЙ ПО ЭТАПАМ
         const winners1_32 = ["HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", "TF", "Западной Казахстан", "Mover", "Unknown", "Тирон турма", "gg", "фимоз", "не вудиксы и хдаки", "Серега акелер", "hrs", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"];
         
-        // Серега акелер победил в 1/16
         const winners1_16 = ["fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Серега акелер", "Xv", "BH", "Топ"];
         
-        // Убрали Xv из победителей 1/8, так как они теперь играют с Серегой
-        const winners1_8 = ["fv", "Haroldwizzex", "TF", "Манчестер Юнайтед"]; 
+        const winners1_8 = ["Haroldwizzex", "TF", "Манчестер Юнайтед"]; 
 
         function drawSide(containerId, sideTeams) {
             const container = document.getElementById(containerId);
