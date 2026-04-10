@@ -337,29 +337,37 @@
             { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
+        // Команды с автопоражением
         const autoLossTeams =;
 
+        // СПИСКИ ПОБЕДИТЕЛЕЙ ПО ЭТАПАМ
         const winners1_32 = [
             "HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", 
             "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", 
             "TF", "Западной Казахстан", "Mover", "Unknown", "Тирон турма", "gg", "фимоз", "не вудиксы и хдаки", 
-            "Серега акелер", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"
+            "Серега акелер", "hrs", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"
         ];
         
         const winners1_16 = [
             "fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", 
-            "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Xv", "Alpha", "BH", "Клубника"
+            "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Серега акелер", "Xv", "BH", "Топ"
         ];
         
         const winners1_8 =;
         
         const winners1_4 =;
 
-        const winners1_2 =;
+        const winners1_2 = [];
 
         function drawSide(containerId, sideTeams, sideIndex) {
             const container = document.getElementById(containerId);
-            const stages =;
+            const stages = [
+                { title: "1/32", matches: 16 }, 
+                { title: "1/16", matches: 8 }, 
+                { title: "1/8", matches: 4 }, 
+                { title: "1/4", matches: 2 }, 
+                { title: "Полуфинал", matches: 1 }
+            ];
             
             let currentStageTeams =;
 
@@ -409,8 +417,12 @@
             });
             
             // Закидываем полуфиналистов в Grand Final блок (для визуализации)
-            if (sideIndex === 0 && currentStageTeams) document.getElementById('final-team-1').innerText = currentStageTeams.name;
-            if (sideIndex === 1 && currentStageTeams) document.getElementById('final-team-2').innerText = currentStageTeams.name;
+            if (sideIndex === 0 && currentStageTeams) {
+                document.getElementById('final-team-1').innerText = currentStageTeams.name;
+            }
+            if (sideIndex === 1 && currentStageTeams) {
+                document.getElementById('final-team-2').innerText = currentStageTeams.name;
+            }
         }
 
         drawSide('bracket-left', teamsDB.slice(0, 32), 0);
