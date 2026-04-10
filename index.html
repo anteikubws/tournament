@@ -149,9 +149,9 @@
                 <div class="final-match">
                     <h2 style="color: #fff; font-size: 16px;">Grand Final</h2>
                     <div class="prize-gold"><i class="fa-solid fa-trophy"></i> 6.500₽</div>
-                    <div style="padding:12px; background:rgba(255,255,255,0.03); border-radius:6px; margin:5px 0; border:1px solid var(--border-color); font-weight:700;">TBD</div>
+                    <div style="padding:12px; background:rgba(255,255,255,0.03); border-radius:6px; margin:5px 0; border:1px solid var(--border-color); font-weight:700;" id="final-team-1">TBD</div>
                     <div style="color:var(--accent-color); font-weight:bold; margin:2px 0; font-size:12px;">VS</div>
-                    <div style="padding:12px; background:rgba(255,255,255,0.03); border-radius:6px; margin:5px 0; border:1px solid var(--border-color); font-weight:700;">TBD</div>
+                    <div style="padding:12px; background:rgba(255,255,255,0.03); border-radius:6px; margin:5px 0; border:1px solid var(--border-color); font-weight:700;" id="final-team-2">TBD</div>
                     <div class="prize-silver"><i class="fa-solid fa-medal"></i> 3.000₽</div>
                 </div>
             </div>
@@ -262,7 +262,7 @@
     <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
 
     <script>
-        // Скрипт защиты: Блокировка ПКМ и горячих клавиш (F12, Ctrl+Shift+I, Ctrl+U)
+        // Скрипт защиты: Блокировка ПКМ и горячих клавиш
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.key === 'F12' || event.keyCode === 123) event.preventDefault();
@@ -337,42 +337,49 @@
             { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
-        // Команды с автопоражением
         const autoLossTeams =;
 
-        // СПИСКИ ПОБЕДИТЕЛЕЙ ПО ЭТАПАМ
         const winners1_32 = [
             "HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", 
             "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", 
             "TF", "Западной Казахстан", "Mover", "Unknown", "Тирон турма", "gg", "фимоз", "не вудиксы и хдаки", 
-            "Xv", "Alpha", "BH", "Вип казак", "Клубника"
+            "Серега акелер", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"
         ];
         
-        const winners1_16 =;
+        const winners1_16 = [
+            "fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", 
+            "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Xv", "Alpha", "BH", "Клубника"
+        ];
         
         const winners1_8 =;
         
         const winners1_4 =;
 
-        function drawSide(containerId, sideTeams) {
+        const winners1_2 =;
+
+        function drawSide(containerId, sideTeams, sideIndex) {
             const container = document.getElementById(containerId);
             const stages =;
+            
             let currentStageTeams =;
 
             stages.forEach((stage, sIdx) => {
-                const round = document.createElement('div'); round.className = 'round';
+                const round = document.createElement('div'); 
+                round.className = 'round';
                 round.innerHTML = `<div class="round-title">${stage.title}</div>`;
                 let nextStageTeams = [];
 
-                let winList =];
+                let winList =;
 
                 for (let i = 0; i < stage.matches; i++) {
-                    const match = document.createElement('div'); match.className = 'match';
+                    const match = document.createElement('div'); 
+                    match.className = 'match';
                     let t1 = currentStageTeams || null;
                     let t2 = currentStageTeams || null;
 
                    .forEach(t => {
-                        const teamEl = document.createElement('div'); teamEl.className = 'team';
+                        const teamEl = document.createElement('div'); 
+                        teamEl.className = 'team';
                         let name = t ? t.name : "TBD";
                         let scoreVal = "0";
 
@@ -386,7 +393,11 @@
                         }
 
                         teamEl.innerHTML = `<span class="team-name">${name}</span><span class="score">${scoreVal}</span>`;
-                        if (t) { teamEl.dataset.t1 = t.t1; teamEl.dataset.t2 = t.t2; teamEl.dataset.name = t.name; }
+                        if (t) { 
+                            teamEl.dataset.t1 = t.t1; 
+                            teamEl.dataset.t2 = t.t2; 
+                            teamEl.dataset.name = t.name; 
+                        }
                         match.appendChild(teamEl);
                     });
                     
@@ -396,10 +407,14 @@
                 currentStageTeams = nextStageTeams;
                 container.appendChild(round);
             });
+            
+            // Закидываем полуфиналистов в Grand Final блок (для визуализации)
+            if (sideIndex === 0 && currentStageTeams) document.getElementById('final-team-1').innerText = currentStageTeams.name;
+            if (sideIndex === 1 && currentStageTeams) document.getElementById('final-team-2').innerText = currentStageTeams.name;
         }
 
-        drawSide('bracket-left', teamsDB.slice(0, 32));
-        drawSide('bracket-right', teamsDB.slice(32, 64));
+        drawSide('bracket-left', teamsDB.slice(0, 32), 0);
+        drawSide('bracket-right', teamsDB.slice(32, 64), 1);
 
         document.querySelectorAll('.team').forEach(t => {
             t.onclick = () => {
