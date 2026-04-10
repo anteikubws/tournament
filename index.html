@@ -260,9 +260,8 @@
     </div>
     
     <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
-
     <script>
-        // Скрипт защиты: Блокировка ПКМ и горячих клавиш (F12, Ctrl+Shift+I, Ctrl+U)
+        // Скрипт защиты: Блокировка ПКМ и горячих клавиш
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.key === 'F12' || event.keyCode === 123) event.preventDefault();
@@ -312,17 +311,17 @@
             { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" },
             { name: "Узбек сила", t1: "@triks_vpotoke", t2: "@se00000mns6" },
             { name: "Кмс по отсос", t1: "@wqqq04", t2: "@tyfuss0" },
-            { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" },
+            { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" }, 
             { name: "Газан", t1: "@.maksim.dark", t2: "@fairikun" },
             { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" },
             { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" },
             { name: "Ендермен", t1: "@a1_sxxx", t2: "@martin_quaxside" },
             { name: "Империя Вайтов", t1: "@radgaw9ch", t2: "@meow7404" },
             { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" },
-            { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" },
-            { name: "Бичиганы", t1: "@frozeeeeen", t2: "@iwilldietraxizawrxd" },
+            { name: "hrs", t1: "@awarano", t2: "@iuri07576" }, 
+            { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" }, 
             { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" },
-            { name: "hrs", t1: "@awarano", t2: "@iuri07576" },
+            { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" }, 
             { name: "Xv", t1: "@xdkak", t2: "@woodyxx" },
             { name: "Элитные проститутки", t1: "@onlyypotok", t2: "@only_feliks" },
             { name: "Потные 777", t1: "@nononet_777", t2: "@incosloweyn" },
@@ -333,43 +332,59 @@
             { name: "Вип казак", t1: "@only_honestly", t2: "@frendigs" },
             { name: "Joju", t1: "@andreymaximov_", t2: "@only_dag" },
             { name: "Топ", t1: "@solo_rich01_44802", t2: "@.bakiezz" },
-            { name: "Клубника", t1: "@byjusik", t2: "@byquspattimon" },
-            { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
+            { name: "Клубника", t1: "@byjusik", t2: "@byquspattimon" }
         ];
 
-        // Команды с автопоражением
         const autoLossTeams =;
 
-        // СПИСКИ ПОБЕДИТЕЛЕЙ ПО ЭТАПАМ
-        const winners1_32 = ["HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", "TF", "Западной Казахстан", "Mover", "Unknown", "Тирон турма", "gg", "фимоз", "не вудиксы и хдаки", "Серега акелер", "hrs", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"];
+        const winners1_32 = [
+            "HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", 
+            "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", 
+            "TD", "TF", "Mover", "Unknown", "Узбек сила", "Бичиганы", "gg", "Ендермен", "не вудиксы и хдаки", "Тирон турма", "Xv", "Элитные проститутки", "Alpha", "BH", "Вип казак", "Топ"
+        ];
         
-        const winners1_16 = ["fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Серега акелер", "Xv", "BH", "Топ"];
+        const winners1_16 = [
+            "fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", 
+            "TF", "Unknown", "Бичиганы", "gg", "Тирон турма", "Xv", "BH", "Топ"
+        ];
         
-        const winners1_8 =; 
-
+        const winners1_8 =;
+        
         const winners1_4 =;
 
-        const winners1_2 = [];
+        const winners1_2 =;
 
-        function drawSide(containerId, sideTeams) {
+        function drawSide(containerId, sideTeams, sideIndex) {
             const container = document.getElementById(containerId);
             const stages =;
-            let currentStageTeams =;
+            
+            let currentStageTeams = sideTeams.slice();
 
             stages.forEach((stage, sIdx) => {
-                const round = document.createElement('div'); round.className = 'round';
-                round.innerHTML = `<div class="round-title">${stage.title}</div>`;
+                const round = document.createElement('div'); 
+                round.className = 'round';
+                round.innerHTML = '<div class="round-title">' + stage.title + '</div>';
                 let nextStageTeams = [];
 
-                let winList = || [];
+                let winList = [];
+                if (sIdx === 0) winList = winners1_32;
+                else if (sIdx === 1) winList = winners1_16;
+                else if (sIdx === 2) winList = winners1_8;
+                else if (sIdx === 3) winList = winners1_4;
+                else if (sIdx === 4) winList = winners1_2;
 
                 for (let i = 0; i < stage.matches; i++) {
-                    const match = document.createElement('div'); match.className = 'match';
+                    const match = document.createElement('div'); 
+                    match.className = 'match';
                     let t1 = currentStageTeams || null;
                     let t2 = currentStageTeams || null;
+                    
+                    let pair =;
+                    let pushed = false;
 
-                    .forEach(t => {
-                        const teamEl = document.createElement('div'); teamEl.className = 'team';
+                    pair.forEach(t => {
+                        const teamEl = document.createElement('div'); 
+                        teamEl.className = 'team';
                         let name = t ? t.name : "TBD";
                         let scoreVal = "0";
 
@@ -379,32 +394,49 @@
                         } else if (winList.includes(name)) {
                             teamEl.classList.add("winner-text");
                             scoreVal = "2";
-                            if (!nextStageTeams.includes(t)) nextStageTeams.push(t);
+                            if (!pushed) {
+                                nextStageTeams.push(t);
+                                pushed = true;
+                            }
                         }
 
-                        teamEl.innerHTML = `<span class="team-name">${name}</span><span class="score">${scoreVal}</span>`;
-                        if (t) { teamEl.dataset.t1 = t.t1; teamEl.dataset.t2 = t.t2; teamEl.dataset.name = t.name; }
+                        teamEl.innerHTML = '<span class="team-name">' + name + '</span><span class="score">' + scoreVal + '</span>';
+                        if (t) { 
+                            teamEl.dataset.t1 = t.t1; 
+                            teamEl.dataset.t2 = t.t2; 
+                            teamEl.dataset.name = t.name; 
+                        }
                         match.appendChild(teamEl);
                     });
                     
-                    if (nextStageTeams.length < i + 1) nextStageTeams.push(null);
+                    if (!pushed) nextStageTeams.push(null);
                     round.appendChild(match);
                 }
                 currentStageTeams = nextStageTeams;
                 container.appendChild(round);
             });
+            
+            // Финал
+            if (sideIndex === 0 && currentStageTeams) {
+                document.getElementById('final-team-1').innerText = currentStageTeams.name;
+            }
+            if (sideIndex === 1 && currentStageTeams) {
+                document.getElementById('final-team-2').innerText = currentStageTeams.name;
+            }
         }
 
-        drawSide('bracket-left', teamsDB.slice(0, 32));
-        drawSide('bracket-right', teamsDB.slice(32, 64));
+        drawSide('bracket-left', teamsDB.slice(0, 32), 0);
+        drawSide('bracket-right', teamsDB.slice(32, 64), 1);
 
-        document.querySelectorAll('.team').forEach(t => t.onclick = () => {
-            if (!t.dataset.name || t.dataset.name === "TBD") return;
-            document.getElementById("modalTitle").innerText = t.dataset.name;
-            document.getElementById("modalPlayers").innerHTML = `
-                <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div>
-                <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>`;
-            document.getElementById('infoModal').style.display = 'flex';
+        document.querySelectorAll('.team').forEach(t => {
+            t.onclick = () => {
+                if (!t.dataset.name || t.dataset.name === "TBD") return;
+                document.getElementById("modalTitle").innerText = t.dataset.name;
+                document.getElementById("modalPlayers").innerHTML = 
+                    '<div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ' + t.dataset.t1 + '</div>' +
+                    '<div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ' + t.dataset.t2 + '</div>';
+                document.getElementById('infoModal').style.display = 'flex';
+            };
         });
 
         const slider = document.getElementById('scroll-area');
