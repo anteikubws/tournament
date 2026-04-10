@@ -262,7 +262,6 @@
     <div id="infoModal" class="modal"><div class="modal-content"><span class="close" onclick="document.getElementById('infoModal').style.display='none'">&times;</span><h2 id="modalTitle"></h2><div id="modalPlayers"></div></div></div>
 
     <script>
-        // Скрипт защиты
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.key === 'F12' || event.keyCode === 123) event.preventDefault();
@@ -337,10 +336,8 @@
             { name: "Отпор пш", t1: "@sokol_33pr", t2: "@kent094054" }
         ];
 
-        // Команда с автопоражением
         const autoLossTeams =;
 
-        // Полностью заполненные массивы победителей
         const winners1_32 = [
             "HS", "fv", "bg", "suzuki", "Зайдём с легитом", "#жировая_складка", "Friki", "Не знающие побед", 
             "Бананы", "wp", "Незнаю", "Haroldwizzex", "nasvai", "Манчестер Юнайтед", "1winbetboom team", "Название", 
@@ -348,16 +345,13 @@
             "Серега акелер", "Все на деп", "Xv", "Alpha", "BH", "Вип казак", "Топ", "Клубника"
         ];
         
-        const winners1_16 = [
-            "fv", "bg", "#жировая_складка", "Friki", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название", 
-            "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Серега акелер", "Xv", "BH", "Топ"
-        ];
+        const winners1_16 =;
         
         const winners1_8 =;
         
         const winners1_4 =;
 
-        const winners1_2 = [];
+        const winners1_2 =;
 
         function drawSide(containerId, sideTeams, sideIndex) {
             const container = document.getElementById(containerId);
@@ -368,7 +362,7 @@
             stages.forEach((stage, sIdx) => {
                 const round = document.createElement('div'); 
                 round.className = 'round';
-                round.innerHTML = `<div class="round-title">${stage.title}</div>`;
+                round.innerHTML = '<div class="round-title">' + stage.title + '</div>';
                 let nextStageTeams = [];
 
                 let winList = [];
@@ -401,7 +395,7 @@
                             if (!nextStageTeams.includes(t)) nextStageTeams.push(t);
                         }
 
-                        teamEl.innerHTML = `<span class="team-name">${name}</span><span class="score">${scoreVal}</span>`;
+                        teamEl.innerHTML = '<span class="team-name">' + name + '</span><span class="score">' + scoreVal + '</span>';
                         if (t) { 
                             teamEl.dataset.t1 = t.t1; 
                             teamEl.dataset.t2 = t.t2; 
@@ -432,9 +426,9 @@
             t.onclick = () => {
                 if (!t.dataset.name || t.dataset.name === "TBD") return;
                 document.getElementById("modalTitle").innerText = t.dataset.name;
-                document.getElementById("modalPlayers").innerHTML = `
-                    <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t1}</div>
-                    <div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ${t.dataset.t2}</div>`;
+                document.getElementById("modalPlayers").innerHTML = 
+                    '<div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ' + t.dataset.t1 + '</div>' +
+                    '<div style="background:rgba(114,137,218,0.1); color:#7289DA; padding:10px; margin:10px 0; border-radius:8px; border:1px solid rgba(114,137,218,0.3); font-weight:600;"><i class="fa-brands fa-discord"></i> ' + t.dataset.t2 + '</div>';
                 document.getElementById('infoModal').style.display = 'flex';
             };
         });
