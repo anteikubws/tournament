@@ -220,7 +220,7 @@
                     <tr><td>1 Этап</td><td>@yyvv26</td><td>@hartobietes</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>2 Этап</td><td>@consciencenotfound</td><td>johnny_nolove</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>3 Этап</td><td>@nn__nn__nn</td><td>@andriudeiner</td><td class="gc-amount">250 GC</td></tr>
-                    <tr><td>4 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
+                    <tr><td>4 Этап</td><td>@yyvv26</td><td>@izixizix</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>5 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>6 Этап</td><td>NC</td><td>NC</td><td class="gc-amount">250 GC</td></tr>
                     <tr><td>Итоги турнира</td><td>NC</td><td>NC</td><td class="gc-amount">500 GC</td></tr>
@@ -267,49 +267,74 @@
             if (event.ctrlKey && event.key.toUpperCase() === 'U') event.preventDefault();
         });
 
-        // База только из 16 команд (старт с 1/8)
+        // Сетка стартует с 1/16. Всего 32 команды (по 16 в левой и правой частях)
         const teamsDB = [
-            // Левая часть сетки (8 команд)
+            // Левая часть сетки (16 команд)
             { name: "fv", t1: "@yyvv26", t2: "@izixizix" },
-            { name: "Friki", t1: "@nn__nn__nn", t2: "@millionrraresniy_01823" },
+            { name: "HS", t1: "@hartobietes", t2: "@anqwxxd." },
             { name: "bg", t1: "@gracioc", t2: "@flerr1xx" },
+            { name: "suzuki", t1: "@lonbbos", t2: "@bairon0364" },
+            { name: "Friki", t1: "@nn__nn__nn", t2: "@millionrraresniy_01823" },
+            { name: "Зайдём с легитом", t1: "@abayuzer", t2: "@sanyalegenda_" },
             { name: "#жировая_складка", t1: "@tripplesix999", t2: "@adrizexx" },
+            { name: "Не знающие побед", t1: "@kanao_0101", t2: "@nasvai_." },
             { name: "Бананы", t1: "@andriudeiner", t2: "@r1ce001" },
+            { name: "wp", t1: "@m9wkh", t2: "@phoenixxst." },
             { name: "Haroldwizzex", t1: "@haroku", t2: "@immportal_immportal" },
+            { name: "Незнаю", t1: "@deleted.user0011", t2: "@foster_solo" },
             { name: "Манчестер Юнайтед", t1: "@cutieseattle", t2: "@fimiguerreroo" },
+            { name: "nasvai", t1: "@ebnutyi", t2: "@posyabekich" },
             { name: "Название", t1: "@mincxxx", t2: "@consiencenotfound" },
+            { name: "1winbetboom team", t1: "@quancorace", t2: "@marceline33" },
 
-            // Правая часть сетки (8 команд)
+            // Правая часть сетки (16 команд)
             { name: "TF", t1: "@zeromeoness.", t2: "@flensy2" },
+            { name: "Западной Казахстан", t1: "@nightshade.o1", t2: "@teq1la0" },
             { name: "Unknown", t1: "@johnny_nolove", t2: "@nadir_alpha" },
+            { name: "Mover", t1: "@tezikvalotondor", t2: "@dragon_mover" },
             { name: "Тирон турма", t1: "@.w1xnis66", t2: "@_bogopodoben" },
+            { name: "gg", t1: "@.callmelostcare", t2: "@isufferfromepilepsy" },
             { name: "не вудиксы и хдаки", t1: "@kennz.666", t2: "@wofin11" },
+            { name: "фимоз", t1: "@ttitqqq", t2: "@rgt10.1" },
             { name: "Серега акелер", t1: "@fixroland", t2: "@w1nlll9999_67432" },
+            { name: "Все на деп", t1: "@lumbyprime", t2: "@u9ha1p69" },
             { name: "Xv", t1: "@xdkak", t2: "@woodyxx" },
+            { name: "Элитные проститутки", t1: "@onlyypotok", t2: "@only_feliks" },
             { name: "BH", t1: "@begremyke666", t2: "@hik1ru" },
-            { name: "Топ", t1: "@solo_rich01_44802", t2: "@.bakiezz" }
+            { name: "Alpha", t1: "@xavasaki1", t2: "@torexzz" },
+            { name: "Топ", t1: "@solo_rich01_44802", t2: "@.bakiezz" },
+            { name: "Вип казак", t1: "@only_honestly", t2: "@frendigs" }
         ];
 
-        // Кто выиграл в 1/8
+        // Победители в 1/16 (вышли в 1/8)
+        const winners1_16 = [
+            "fv", "bg", "Friki", "#жировая_складка", "Бананы", "Haroldwizzex", "Манчестер Юнайтед", "Название",
+            "TF", "Unknown", "Тирон турма", "не вудиксы и хдаки", "Серега акелер", "Xv", "BH", "Топ"
+        ];
+        
+        // Победители в 1/8 (вышли в 1/4)
         const winners1_8 = [
-            "fv", "bg", "Бананы", "Манчестер Юнайтед", 
+            "fv", "Friki", "Бананы", "Манчестер Юнайтед",
             "TF", "Тирон турма", "Xv", "BH"
         ];
         
-        // Кто выиграл в 1/4
+        // Победители в 1/4 (вышли в Полуфинал)
+        // Xv и BH еще не сыграли, поэтому они в список не входят
         const winners1_4 = [
-            "fv", "Бананы", 
-            "TF", "Xv"
+            "fv", "Бананы", "TF"
         ];
 
-        // Кто выиграл в Полуфинале (вышли в Гранд-Финал)
-        const winners1_2 = ["fv", "TF"];
+        // Победители в Полуфинале (вышли в Гранд-Финал)
+        const winners1_2 = [
+            "fv"
+        ];
 
         function drawSide(containerId, sideTeams, sideIndex) {
             const container = document.getElementById(containerId);
             
-            // Оставили только 1/8, 1/4 и Полуфинал
+            // Задаем этапы для отрисовки
             const stages = [
+                { title: "1/16", matches: 8 },
                 { title: "1/8", matches: 4 },
                 { title: "1/4", matches: 2 },
                 { title: "Полуфинал", matches: 1 }
@@ -324,9 +349,10 @@
                 let nextStageTeams = [];
 
                 let winList = [];
-                if (sIdx === 0) winList = winners1_8;
-                else if (sIdx === 1) winList = winners1_4;
-                else if (sIdx === 2) winList = winners1_2;
+                if (sIdx === 0) winList = winners1_16;
+                else if (sIdx === 1) winList = winners1_8;
+                else if (sIdx === 2) winList = winners1_4;
+                else if (sIdx === 3) winList = winners1_2;
 
                 for (let i = 0; i < stage.matches; i++) {
                     const match = document.createElement('div'); 
@@ -343,6 +369,7 @@
                         let name = t ? t.name : "TBD";
                         let scoreVal = "0";
 
+                        // Проверяем победителей на данном этапе
                         if (winList.includes(name)) {
                             teamEl.classList.add("winner-text");
                             scoreVal = "2";
@@ -368,7 +395,7 @@
                 container.appendChild(round);
             });
             
-            // Отправляем победителей полуфинала в блок Grand Final
+            // Если кто-то прошел полуфинал, он попадает в Гранд-Финал
             if (sideIndex === 0 && currentStageTeams[0]) {
                 document.getElementById('final-team-1').innerText = currentStageTeams[0].name;
             }
@@ -377,11 +404,11 @@
             }
         }
 
-        // Запускаем отрисовку для левой и правой части
-        drawSide('bracket-left', teamsDB.slice(0, 8), 0);
-        drawSide('bracket-right', teamsDB.slice(8, 16), 1);
+        // Отрисовываем левую и правую сетку
+        drawSide('bracket-left', teamsDB.slice(0, 16), 0);
+        drawSide('bracket-right', teamsDB.slice(16, 32), 1);
 
-        // Кликабельные команды для вызова модального окна
+        // Взаимодействие (модальное окно при клике на команду)
         document.querySelectorAll('.team').forEach(t => {
             t.onclick = () => {
                 if (!t.dataset.name || t.dataset.name === "TBD") return;
@@ -393,7 +420,7 @@
             };
         });
 
-        // Скроллинг мышью (Drag-to-scroll)
+        // Скроллинг сетки мышью (Drag-to-scroll)
         const slider = document.getElementById('scroll-area');
         let isDown = false, startX, scrollLeft;
         slider.onmousedown = e => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; };
